@@ -28,4 +28,9 @@ public class UsersController {
         userRepository.deleteById(userId);
         return HttpStatus.OK;
     }
+
+    @PostMapping("/users")
+    public User createNewUser(@RequestBody User newUser){
+        return userRepository.save(newUser);
+    }
 }
