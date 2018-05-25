@@ -17,5 +17,5 @@ public class User {
 
     @Column(name = "TAG_LINE")
     private String tagLine;
-    
+
 }
