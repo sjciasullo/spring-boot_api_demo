@@ -11,6 +11,7 @@ services:
     command: './gradlew bootRun'
     environment:
         - GRADLE_USER_HOME=cache
+        - SPRING_PROFILES_ACTIVE=dev
   postgresdev:
         image: postgres
         ports:
