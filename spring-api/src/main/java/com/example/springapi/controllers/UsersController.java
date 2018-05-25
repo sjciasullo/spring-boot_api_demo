@@ -4,8 +4,7 @@ import com.example.springapi.models.User;
 import com.example.springapi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UsersController {
@@ -17,4 +16,11 @@ public class UsersController {
     public Iterable<User> findAllUsers() {
         return userRepository.findAll();
     }
+
+    @GetMapping("/users/{userId}")
+    public Optional<User> findUserById(@PathVariable Long userId) {
+        return userRepository.findById(userId);
+    }
+
+
 }
