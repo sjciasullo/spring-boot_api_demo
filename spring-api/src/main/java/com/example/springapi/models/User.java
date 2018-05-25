@@ -1,9 +1,11 @@
 package com.example.springapi.models;
 
+import lombok.*;
 import javax.persistence.*;
 
-@Entity
-@Table(name = "USERS")
+@Data
+@AllArgsConstructor @NoArgsConstructor @Getter @Setter
+@Entity @Table(name = "USERS")
 public class User {
 
     @Id
@@ -15,30 +17,5 @@ public class User {
 
     @Column(name = "TAG_LINE")
     private String tagLine;
-
-    public User() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getUserName(){
-        return userName;
-    }
-
-    public String getTagLine(){
-        return tagLine;
-    }
-
-    public void setId(Long id){
-        this.id = id;
-    }
-
-    public void setUserName(String userName){
-        this.userName = userName;
-    }
-
-    public void setTagLine(String tagLine){
-        this.tagLine = tagLine;
-    }
+    
 }
