@@ -9,3 +9,5 @@ services:
       - .:/app
     working_dir: /app
     command: './gradlew bootRun'
+    environment:
+        - GRADLE_USER_HOME=cache
