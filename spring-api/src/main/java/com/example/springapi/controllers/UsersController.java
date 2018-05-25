@@ -3,6 +3,7 @@ package com.example.springapi.controllers;
 import com.example.springapi.models.User;
 import com.example.springapi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
@@ -22,5 +23,9 @@ public class UsersController {
         return userRepository.findById(userId);
     }
 
-
+    @DeleteMapping("/users/{userId}")
+    public HttpStatus deleteUserById(@PathVariable Long userId) {
+        userRepository.deleteById(userId);
+        return HttpStatus.OK;
+    }
 }
