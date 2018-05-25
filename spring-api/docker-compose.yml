@@ -11,3 +11,11 @@ services:
     command: './gradlew bootRun'
     environment:
         - GRADLE_USER_HOME=cache
+  postgresdev:
+        image: postgres
+        ports:
+          - "5432:5432"
+        environment:
+          - POSTGRES_PASSWORD=password
+          - POSTGRES_USER=postgres
+          - POSTGRES_DB=pgdev
