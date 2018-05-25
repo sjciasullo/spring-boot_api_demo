@@ -3,3 +3,8 @@
 
 A client has outlined a need for a new full-stack dashboard app
 You will design, develop, and architect a full-stack app with Spring Boot and Spring Framework. This application uses a front-end dashboard built in `React`.
+
+## Models
+
+- user table with user_name, tagline
+- meditation table with date, user_id, minutes, (string) type, (string) notes
