@@ -1,0 +1,10 @@
+ALTER TABLE USERS ADD PRIMARY KEY (ID);
+
+CREATE TABLE ACTIVITIES (
+    ID serial PRIMARY KEY,
+    ACTIVITY_NAME varchar(100) not null,
+    USER_ID int REFERENCES USERS (ID),
+    MONTH int not null,
+    TOTAL_MINUTES int,
+    NOTES varchar
+);
