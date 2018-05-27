@@ -8,3 +8,4 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
 
 - user table with user_name, tagline
 - meditation table with date, user_id, minutes, (string) type, (string) notes
+    - mvp: use String month, not date 
