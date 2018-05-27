@@ -38,6 +38,7 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
     - this might suggest that activities table keep total time, with name of activity
     - entries are referencing a certain activity
     - hooks will update total minutes for activity, check if an activity exists (if creating a new one) before making it
+    - still have activity name but also have a category, group by category so another table of categories where adding an activity has choice of category
 - web app vs mobile?
     - mobile might give possible reminder each day to log your activities for the day?
     - could use as much as user wants but it might be a full day log
