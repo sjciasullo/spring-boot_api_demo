@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/Header.css';
 
+import UserHeader from './UserHeader';
+
 function Header(props){
   // PROPS :
   // users, userId, setUser
@@ -15,22 +17,33 @@ function Header(props){
     }
   }
 
+  const selectUserTag = (
+    <select onChange={clickUser}>
+      <option>Select a User</option>
+      {users.map(user => {
+        return (
+          <option value={user.id} key={user.id}>{user.userName}</option>
+        )
+      })}
+    </select>
+  );
+
   return(
     <header>
       {userId === 0 ? (
         <div className="no-user-header">
           <h1>Activity Tracker</h1>
-          <select onChange={clickUser}>
-            <option>Select a User</option>
-            {users.map(user => {
-              return (
-                <option value={user.id} key={user.id}>{user.userName}</option>
-              )
-            })}
-          </select>
+          {selectUserTag}
         </div>
       ) : (
-        <h2>{userId} is selected</h2>
+        <div className="user-header">
+          <UserHeader 
+            userName={users[userId - 1].userName} 
+            tagLine={users[userId - 1].tagLine}
+          />
+          {selectUserTag}
+        </div>
+        
       )}
       
     </header>
