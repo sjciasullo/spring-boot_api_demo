@@ -1,4 +1,12 @@
 header {
-  min-height: 100px;
-  border-bottom: solid 1px #bbb
+  min-height: 80px;
+  margin: 0px 15px 0px 15px;
+  border-bottom: solid 1px #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1{
+  font-size: 25px;
 }
