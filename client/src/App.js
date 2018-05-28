@@ -10,7 +10,7 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      loaded: false,
+      usersLoaded: false,
       users: [],
     }
   }
@@ -26,14 +26,23 @@ class App extends Component {
     }).then(res => res.json())
     .then(json => {
       console.log(json);
-      this.setState({users: json})
+      this.setState({
+        users: json,
+        usersLoaded: true
+      })
     }).catch(err => console.log(err))
   }
+
+  // End API calls
 
   render() {
     return (
       <div className="App">
-        <Header />
+        {this.state.usersLoaded ? (
+          <Header users={this.state.users} />
+        ) : (
+          <p>Loading. . .</p>
+        )}
       </div>
     );
   }

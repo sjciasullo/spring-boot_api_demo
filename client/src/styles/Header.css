@@ -5,8 +5,14 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 h1{
   font-size: 25px;
+  margin: 10px;
+}
+
+select{
+  display: block;
 }
