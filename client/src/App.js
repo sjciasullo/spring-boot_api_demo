@@ -12,7 +12,10 @@ class App extends Component {
     this.state = {
       usersLoaded: false,
       users: [],
+      userId: 0 // id of selected user
     }
+
+    this.setUser = this.setUser.bind(this);
   }
 
   componentDidMount(){
@@ -35,11 +38,20 @@ class App extends Component {
 
   // End API calls
 
+  // Changing State from below App component
+  setUser(id){
+    this.setState({
+      userId: id,
+    })
+  }
+
+  // End State Changers
+
   render() {
     return (
       <div className="App">
         {this.state.usersLoaded ? (
-          <Header users={this.state.users} />
+          <Header users={this.state.users} userId={this.state.userId} setUser={this.setUser}/>
         ) : (
           <p>Loading. . .</p>
         )}
