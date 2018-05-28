@@ -5,6 +5,7 @@ import com.example.springapi.repositories.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -18,7 +19,11 @@ public class ActivitiesController {
         return activityRepository.findAll();
     }
 
-    // Is a @GetMapping necessary for a single activity?
+    @GetMapping("/activities/{activityId}")
+    public Optional<Activity> findActivityById(@PathVariable Long activityId) {
+        return activityRepository.findById(activityId);
+    }
+    
     // TODO implement a @GetMapping to get a user's activities
 
     @DeleteMapping("/activities/{activityId}")
