@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 // Import Components needed at top level
 import Header from './components/Header';
-import './App.css';
+
+// Import Style
+import './styles/App.css';
 
 class App extends Component {
   render() {
