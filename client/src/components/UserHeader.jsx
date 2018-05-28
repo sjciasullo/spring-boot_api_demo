@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import '../styles/UserHeader.css';
 
+// Uses Class Component for editing user's tagline TODO
 class UserHeader extends Component{
   constructor(props){
     super(props);
@@ -11,7 +13,10 @@ class UserHeader extends Component{
 
   render(){
     return(
-      <p>This is a user header. {this.state.userName} wants to {this.state.tagLine} </p>
+      <div className="user-info">
+        <h1>{this.props.userName}: </h1>
+        <p>"{this.props.tagLine}"</p>
+      </div>
     )
   }
 }

@@ -15,11 +15,17 @@ header {
   flex-direction: column;
 }
 
-h1{
+.user-header {
+  display: flex;
+  min-width: 80%;
+  justify-content: space-between;
+}
+
+h1 {
   font-size: 25px;
   margin: 10px;
 }
 
-select{
+select {
   display: block;
 }
