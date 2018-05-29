@@ -72,7 +72,7 @@ class App extends Component {
         )}
 
         {this.state.activitiesLoaded ? (
-          <ActivitesLinechart activities={this.state.activites}/>
+          <ActivitesLinechart activities={this.state.activities}/>
         ) : (
           <p>Loading. . .</p>
         )}

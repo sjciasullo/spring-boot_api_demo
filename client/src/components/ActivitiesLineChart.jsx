@@ -4,7 +4,30 @@ import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line} from 're
 function ActivitesLinechart(props){
   const activities = props.activities;
 
+  let monthTracker = {};
+  const monthlyData = [];
   //format activites for linechart data
+  activities.forEach(activity => {
+    const month = activity.month;
+    const name = activity.activityName;
+
+    // look for month in month tracker and sum activity if it exists
+    if(month in monthTracker){
+      if(name in monthlyData[monthTracker[month]]) {
+        monthlyData[monthTracker[month]][name] += activity.totalMinutes;
+      } else {
+        monthlyData[monthTracker[month]][name] = activity.totalMinutes;
+      }
+    } else {
+      const addedIndex = monthlyData.push({month: month}) - 1;
+      monthlyData[addedIndex][name] = activity.totalMinutes;
+      monthTracker[month] = addedIndex;
+    }
+  })
+
+  console.log("monthly data is: ");
+  console.log(monthlyData);
+  console.log(monthTracker);
 
   const data = [
     {month: 'jan', sports: 80, music: 50}, 
