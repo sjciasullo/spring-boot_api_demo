@@ -30,28 +30,23 @@ function ActivitesLinechart(props){
       monthTracker[month] = addedIndex;
     }
   })
-
-  console.log("monthly data is: ");
-  console.log(monthlyData);
-  console.log(uniqueActivities);
-
-  const data = [
-    {month: 'jan', sports: 80, music: 50}, 
-    {month: 'feb', sports: 110, music: 100}, 
-    {month: 'march', sports: 50, music: 200}
-  ];
+  
+  //create lines for chart
+  const lines = [];
+  for(let key in uniqueActivities){
+    lines.push(<Line type="monotone" dataKey={key} stroke="#8884d8" key={key}/>)
+  }
 
   //this is currently an example from recharts.org
   return (
-    <LineChart width={730} height={250} data={data}
+    <LineChart width={730} height={250} data={monthlyData}
                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="month" />
       <YAxis />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="sports" stroke="#8884d8" />
-      <Line type="monotone" dataKey="music" stroke="#82ca9d" />
+      {lines}
     </LineChart>
   )
 }
