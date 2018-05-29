@@ -28,7 +28,6 @@ class App extends Component {
       method: 'GET'
     }).then(res => res.json())
     .then(json => {
-      console.log(json);
       this.setState({
         users: json,
         usersLoaded: true

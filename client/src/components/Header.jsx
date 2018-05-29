@@ -30,6 +30,7 @@ function Header(props){
 
   return(
     <header>
+      {/* {Fix me using trequals with this logic breaks flow} */}
       {userId == 0 ? (
         <div className="no-user-header">
           <h1>Activity Tracker</h1>
