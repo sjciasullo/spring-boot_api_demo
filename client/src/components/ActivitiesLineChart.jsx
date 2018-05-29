@@ -1,5 +1,6 @@
 import React from 'react';
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line} from 'recharts';
+import randomColor from 'randomcolor';
 
 function ActivitesLinechart(props){
   const activities = props.activities;
@@ -30,11 +31,15 @@ function ActivitesLinechart(props){
       monthTracker[month] = addedIndex;
     }
   })
-  
+
   //create lines for chart
   const lines = [];
   for(let key in uniqueActivities){
-    lines.push(<Line type="monotone" dataKey={key} stroke="#8884d8" key={key}/>)
+    lines.push(
+      <Line type="monotone" dataKey={key} 
+            stroke={randomColor({luminosity: 'bright'})} key={key}
+      />
+    )
   }
 
   //this is currently an example from recharts.org
