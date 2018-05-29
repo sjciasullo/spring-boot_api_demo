@@ -58,6 +58,7 @@ class App extends Component {
   // Changing State from below App component
   //sets user which will trickle down changing data
   setUser(id){
+    id = id.toString();
     let filterActivities = this.state.activities.filter(activity => activity.userId == id);
 
     //this may be bad form because changing the state based on prevState
