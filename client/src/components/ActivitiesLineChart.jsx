@@ -1,5 +1,5 @@
 import React from 'react';
-import LineChart from 'recharts';
+import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line} from 'recharts';
 
 function ActivitesLinechart(props){
   const activities = props.activities;
