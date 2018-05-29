@@ -2,7 +2,7 @@ import React from 'react';
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line} from 'recharts';
 import randomColor from 'randomcolor';
 
-function ActivitesLinechart(props){
+function ActivitiesLinechart(props){
   const activities = props.activities;
 
   let monthTracker = {};
@@ -56,4 +56,4 @@ function ActivitesLinechart(props){
   )
 }
 
-export default ActivitesLinechart;
+export default ActivitiesLinechart;

@@ -5,7 +5,7 @@ import Header from './components/Header';
 
 // Import Style
 import './styles/App.css';
-import ActivitesLinechart from './components/ActivitiesLineChart';
+import ActivitiesLinechart from './components/ActivitiesLineChart';
 
 class App extends Component {
   constructor(){
@@ -15,7 +15,8 @@ class App extends Component {
       users: [],
       userId: 0, // id of selected user
       activitiesLoaded: false,
-      activites: []
+      activities: [],
+      selectedActivities: []
     }
 
     this.setUser = this.setUser.bind(this);
@@ -46,6 +47,7 @@ class App extends Component {
     .then(json => {
       this.setState({
         activities: json,
+        selectedActivities: json,
         activitiesLoaded: true
       })
     }).catch(err => console.log(err))
@@ -54,10 +56,23 @@ class App extends Component {
   // End API calls
 
   // Changing State from below App component
+  //sets user which will trickle down changing data
   setUser(id){
+    let filterActivities = this.state.activities.filter(activity => activity.userId == id);
+
+    //this may be bad form because changing the state based on prevState
     this.setState({
       userId: id,
+      selectedActivities: id !== '0' ? filterActivities : this.state.activities
     })
+
+    // alternative with prevState
+    /*this.setState(prevState => ({
+      userId: id,
+      selectedActivities: id !== '0' ? filterActivities : prevState.activities
+    }))
+    */
+    
   }
 
   // End State Changers
@@ -73,7 +88,7 @@ class App extends Component {
         
         <div className="main-display-container">
           {this.state.activitiesLoaded ? (
-            <ActivitesLinechart activities={this.state.activities}/>
+            <ActivitiesLinechart activities={this.state.selectedActivities}/>
           ) : (
             <p>Loading. . .</p>
           )}
