@@ -43,3 +43,9 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
     - mobile might give possible reminder each day to log your activities for the day?
     - could use as much as user wants but it might be a full day log
 
+## Running Instructions
+1. Turn on Docker application
+2. Navigate to project repository in Command Line Interface
+3. Execute 'docker-compose up' from spring api directory
+4. Execute 'npm start' from client
+5. Switch users with select option to view different data subsets
