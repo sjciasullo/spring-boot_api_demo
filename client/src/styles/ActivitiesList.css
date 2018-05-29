@@ -1,0 +1,9 @@
+.list-tags-container {
+  max-height: 200px;
+  border: solid 1px #bbb;
+  overflow: scroll;
+}
+
+.list-tags-container ul {
+  
+}
