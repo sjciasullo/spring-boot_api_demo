@@ -4,9 +4,14 @@ import '../styles/ActivitiesList.css';
 function ActivitiesList(props){
   const activities = props.activities;
 
+  function clickActivity(event){
+    console.log(event);
+  }
+
+  // create list tags
   const activitiesListTags = activities.map((activity) => {
     return (
-      <li key={activity.id}>
+      <li key={activity.id} onClick={clickActivity}>
       {activity.activityName} for {activity.totalMinutes} minutes in {activity.month}
       </li>
     )

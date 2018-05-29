@@ -1,9 +1,25 @@
+.activities-list {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.activities-list h2 {
+  text-decoration: underline;
+}
+
 .list-tags-container {
   max-height: 200px;
   border: solid 1px #bbb;
   overflow: scroll;
+  width: 500px;
+  text-align: center;
+  margin: 20px auto 30px auto;
 }
 
-.list-tags-container ul {
-  
+.list-tags-container ul li {
+  margin: 20px;
+}
+
+.list-tags-container ul li:hover {
+  background-color: #ddd;
 }
