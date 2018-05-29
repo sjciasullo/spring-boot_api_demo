@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 // Import Components needed at top level
 import Header from './components/Header';
+import ActivitiesLinechart from './components/ActivitiesLineChart';
+import MainDisplay from './components/MainDisplay';
 
 // Import Style
 import './styles/App.css';
-import ActivitiesLinechart from './components/ActivitiesLineChart';
 
 class App extends Component {
   constructor(){
@@ -88,14 +89,15 @@ class App extends Component {
         )}
         
         <div className="main-display-container">
-          <h2>{this.state.userId !== '0' ? "Your " : "Total "}Monthly Activities</h2>
           {this.state.activitiesLoaded ? (
-            <ActivitiesLinechart activities={this.state.selectedActivities}/>
+            <MainDisplay 
+              userId={this.state.userId}
+              activities={this.state.selectedActivities}
+            />
           ) : (
             <p>Loading. . .</p>
           )}
         </div>
-        
 
       </div>
     );
