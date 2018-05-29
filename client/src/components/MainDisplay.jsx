@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ActivitiesLinechart from '../components/ActivitiesLineChart';
+import ActivitiesList from '../components/ActivitiesList';
 
 class MainDisplay extends Component{
   constructor(props){
@@ -16,6 +17,7 @@ class MainDisplay extends Component{
       <div className="main-display">
         <h2>{this.props.userId !== '0' ? "Your " : "Total "}Monthly Activities</h2>
         <ActivitiesLinechart activities={this.props.activities}/>
+        <ActivitiesList activities={this.props.activities} />
       </div>
     )
   }
