@@ -19,7 +19,7 @@ function Header(props){
 
   const selectUserTag = (
     <select onChange={clickUser}>
-      <option>Select a User</option>
+      <option value={0}>Select a User</option>
       {users.map(user => {
         return (
           <option value={user.id} key={user.id}>{user.userName}</option>
@@ -30,7 +30,7 @@ function Header(props){
 
   return(
     <header>
-      {userId === 0 ? (
+      {userId == 0 ? (
         <div className="no-user-header">
           <h1>Activity Tracker</h1>
           {selectUserTag}
