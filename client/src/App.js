@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       usersLoaded: false,
       users: [],
-      userId: 0, // id of selected user
+      userId: '0', // id of selected user
       activitiesLoaded: false,
       activities: [],
       selectedActivities: []
@@ -87,6 +87,7 @@ class App extends Component {
         )}
         
         <div className="main-display-container">
+          <h2>{this.state.userId !== '0' ? "Your " : "Total "}Monthly Activities</h2>
           {this.state.activitiesLoaded ? (
             <ActivitiesLinechart activities={this.state.selectedActivities}/>
           ) : (
