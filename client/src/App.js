@@ -70,12 +70,15 @@ class App extends Component {
         ) : (
           <p>Loading. . .</p>
         )}
-
-        {this.state.activitiesLoaded ? (
-          <ActivitesLinechart activities={this.state.activities}/>
-        ) : (
-          <p>Loading. . .</p>
-        )}
+        
+        <div className="main-display-container">
+          {this.state.activitiesLoaded ? (
+            <ActivitesLinechart activities={this.state.activities}/>
+          ) : (
+            <p>Loading. . .</p>
+          )}
+        </div>
+        
 
       </div>
     );

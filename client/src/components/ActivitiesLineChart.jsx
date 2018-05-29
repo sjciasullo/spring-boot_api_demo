@@ -44,8 +44,8 @@ function ActivitesLinechart(props){
 
   //this is currently an example from recharts.org
   return (
-    <LineChart width={730} height={250} data={monthlyData}
-               margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+    <LineChart width={730} height={400} data={monthlyData}
+               margin={{ top: 20, right: 50, left: 50, bottom: 20 }}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="month" />
       <YAxis />
