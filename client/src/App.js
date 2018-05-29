@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 // Import Components needed at top level
 import Header from './components/Header';
-import ActivitiesLinechart from './components/ActivitiesLineChart';
 import MainDisplay from './components/MainDisplay';
 
 // Import Style

@@ -5,13 +5,13 @@ function ActivitiesList(props){
 
   const activitiesListTags = activities.map((activity) => {
     return (
-      <li>{activity.activityName} for {activity.totalMinutes} in {activity.month}</li>
+      <li key={activity.id}>{activity.activityName} for {activity.totalMinutes} minutes in {activity.month}</li>
     )
   })
 
   return (
     <div className="activities-list">
-      <h2>Activity List</h2>
+      <h2>Activity Log</h2>
       <ul>
         {activitiesListTags}
       </ul>
