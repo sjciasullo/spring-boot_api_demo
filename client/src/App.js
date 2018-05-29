@@ -5,6 +5,7 @@ import Header from './components/Header';
 
 // Import Style
 import './styles/App.css';
+import ActivitesLinechart from './components/ActivitiesLineChart';
 
 class App extends Component {
   constructor(){
@@ -12,7 +13,9 @@ class App extends Component {
     this.state = {
       usersLoaded: false,
       users: [],
-      userId: 0 // id of selected user
+      userId: 0, // id of selected user
+      activitiesLoaded: false,
+      activites: []
     }
 
     this.setUser = this.setUser.bind(this);
@@ -20,6 +23,7 @@ class App extends Component {
 
   componentDidMount(){
     this.getUsers();
+    this.getActivities();
   }
 
   // Calls to API
@@ -31,6 +35,18 @@ class App extends Component {
       this.setState({
         users: json,
         usersLoaded: true
+      })
+    }).catch(err => console.log(err))
+  }
+
+  getActivities(){
+    fetch('http://localhost:8080/activities', {
+      method: 'GET'
+    }).then(res => res.json())
+    .then(json => {
+      this.setState({
+        activities: json,
+        activitiesLoaded: true
       })
     }).catch(err => console.log(err))
   }
@@ -54,6 +70,13 @@ class App extends Component {
         ) : (
           <p>Loading. . .</p>
         )}
+
+        {this.state.activitiesLoaded ? (
+          <ActivitesLinechart activities={this.state.activites}/>
+        ) : (
+          <p>Loading. . .</p>
+        )}
+
       </div>
     );
   }
