@@ -6,10 +6,16 @@ function ActivitesLinechart(props){
 
   let monthTracker = {};
   const monthlyData = [];
+  let uniqueActivities = {};
   //format activites for linechart data
   activities.forEach(activity => {
     const month = activity.month;
     const name = activity.activityName;
+
+    //add activity name to uniqueactivities if it doesn't exist there
+    if(!(name in uniqueActivities)){
+      uniqueActivities[name] = 0;
+    }
 
     // look for month in month tracker and sum activity if it exists
     if(month in monthTracker){
@@ -27,7 +33,7 @@ function ActivitesLinechart(props){
 
   console.log("monthly data is: ");
   console.log(monthlyData);
-  console.log(monthTracker);
+  console.log(uniqueActivities);
 
   const data = [
     {month: 'jan', sports: 80, music: 50}, 
