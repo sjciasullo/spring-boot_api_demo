@@ -17,7 +17,13 @@
 }
 
 .list-tags-container ul li {
-  margin: 20px;
+  margin: 20px 30px 20px 30px;
+  padding: 5px 0px 5px 0px;
+}
+
+.list-tags-container ul li:before {
+  content: ">>";
+  padding-right: 5px;
 }
 
 .list-tags-container ul li:hover {
