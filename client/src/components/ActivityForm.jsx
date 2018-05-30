@@ -172,7 +172,7 @@ class ActivityForm extends Component{
                 <input type="submit" value="Save"/>
               )}
               {this.props.activityId !== 0 && (
-                <button onClick={this.deleteActivity}>Delete</button>
+                <button id="delete" onClick={this.deleteActivity}>Delete</button>
               )}
               
             </form>
