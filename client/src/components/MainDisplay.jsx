@@ -31,7 +31,11 @@ class MainDisplay extends Component{
             activities={this.props.activities} 
             switchEditActivity={this.switchEditActivity}
           />
-          <ActivityForm userId={this.props.userId} activityId={this.state.activityId}/>
+          <ActivityForm 
+            userId={this.props.userId} 
+            activityId={this.state.activityId}
+            editActivity={this.props.editActivity}
+          />
         </div>
       </div>
     )

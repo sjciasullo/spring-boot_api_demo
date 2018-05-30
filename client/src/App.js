@@ -20,6 +20,7 @@ class App extends Component {
     }
 
     this.setUser = this.setUser.bind(this);
+    this.editActivity = this.editActivity.bind(this);
   }
 
   componentDidMount(){
@@ -77,7 +78,28 @@ class App extends Component {
 
   //addActivity
 
-  //editActivity
+  editActivity(editedActivity){
+    // find object in both arrays in state
+    let activityCopy = [...this.state.activities]
+    const activityIndex = activityCopy.findIndex( (element) => {
+      return element.id === editedActivity.id;
+    })
+    let filteredCopy = [...this.state.selectedActivities]
+    const filteredIndex = filteredCopy.findIndex( (element) => {
+      return element.id === editedActivity.id;
+    })
+
+    // update arrays
+    activityCopy[activityIndex] = editedActivity;
+    filteredCopy[filteredIndex] = editedActivity;
+
+    // save in state
+    this.setState({
+      activities: activityCopy,
+      selectedActivities: filteredCopy,
+    })
+
+  }
 
   //deleteActivity
 
@@ -98,6 +120,7 @@ class App extends Component {
               pageDisplay="all"
               userId={this.state.userId}
               activities={this.state.selectedActivities}
+              editActivity={this.editActivity}
             />
           ) : (
             <p>Loading. . .</p>

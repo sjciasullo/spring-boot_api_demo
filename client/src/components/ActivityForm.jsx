@@ -76,7 +76,7 @@ class ActivityForm extends Component{
       })
     }).then(res => res.json())
     .then(json => {
-      console.log(json);
+      this.props.editActivity(json);
     }).catch(err => console.log(err))
   }
 
@@ -100,7 +100,7 @@ class ActivityForm extends Component{
       // then add in top state
     } else {
       // patch it
-      this.patchActivity(activityId);
+      this.patchActivity(activityId);      
     }
 
   }
