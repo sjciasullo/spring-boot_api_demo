@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/ActivityForm.css';
 
 class ActivityForm extends Component{
   constructor(props){
