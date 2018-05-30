@@ -19,6 +19,9 @@ function ActivitiesList(props){
       <h2>Activity Log</h2>
       <div className="list-tags-container">
         <ul>
+          <button onClick={() => switchEditActivity(0)}>
+            Create New Activity
+          </button>
           {activitiesListTags}
         </ul>
       </div>

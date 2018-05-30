@@ -24,7 +24,16 @@ class ActivityForm extends Component{
   // but alas this would not reset the state
   componentWillReceiveProps(nextProps){
     if(nextProps.activityId !== this.props.activityId){
-      this.getActivity(nextProps.activityId);
+      if(nextProps.activityId === 0){
+        this.setState({
+          totalMinutes: "",
+          activityName: "",
+          month: "",
+          notes: ""
+        })
+      } else {
+        this.getActivity(nextProps.activityId);
+      }
     }
   }
   
