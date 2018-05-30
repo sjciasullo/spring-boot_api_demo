@@ -14,23 +14,14 @@ class MainDisplay extends Component{
   }
 
   render(){
-    //determine page to render
-    let displayComponents = [];
-    switch(this.props.pageDisplay){
-      case 'single':
-        // use single component and pass it the activity id to fetch it
-        break;
-      default:
-        displayComponents.push(<h2 key={0}>{this.props.userId !== '0' ? "Your " : "Total "}Monthly Activities</h2>);
-        displayComponents.push(<ActivitiesLinechart key={1} activities={this.props.activities}/>);
-        displayComponents.push(<ActivitiesList key={2} activities={this.props.activities} />);
-        break;
-    }
 
     return(
       <div className="main-display">
-        {displayComponents}
-        <ActivityForm userId={0} activityId={0}/>
+        <ActivitiesLinechart activities={this.props.activities}/>
+        <div className="activities-container">
+          <ActivitiesList activities={this.props.activities} />
+          <ActivityForm userId={0} activityId={0}/>
+        </div>
       </div>
     )
   }
