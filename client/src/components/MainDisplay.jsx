@@ -16,7 +16,6 @@ class MainDisplay extends Component{
   }
 
   switchEditActivity(id){
-    console.log("trying to switch to active edited id");
     this.setState({
       activityId: id,
     })

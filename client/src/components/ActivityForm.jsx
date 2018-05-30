@@ -16,14 +16,23 @@ class ActivityForm extends Component{
   }
 
   componentDidMount(){
-    this.getActivity();
+    this.getActivity(this.props.activityId);
   }
 
-  getActivity(){
-    const activityId = this.props.activityId;
+  // deal with getting next activity 
+  // alternative would be getting the activity in main display and passing it down,
+  // but alas this would not reset the state
+  componentWillReceiveProps(nextProps){
+    if(nextProps.activityId !== this.props.activityId){
+      this.getActivity(nextProps.activityId);
+    }
+  }
+  
+
+  getActivity(id){
     // if activity is 0 then we are trying to create a new activity
-    if(activityId !== 0){
-      fetch(`http://localhost:8080/activities/${activityId}`, {
+    if(id !== 0){
+      fetch(`http://localhost:8080/activities/${id}`, {
         method: 'GET'
       }).then(res => res.json())
       .then(json => {
