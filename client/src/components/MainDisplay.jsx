@@ -1,23 +1,46 @@
 import React, { Component } from 'react';
-import ActivitiesLinechart from '../components/ActivitiesLineChart';
-import ActivitiesList from '../components/ActivitiesList';
+import '../styles/MainDisplay.css';
+
+import ActivitiesLinechart from './ActivitiesLineChart';
+import ActivitiesList from './ActivitiesList';
+import ActivityForm from './ActivityForm';
 
 class MainDisplay extends Component{
   constructor(props){
     // PROP LIST
-    // userId, activities
+    // userId, activities, pageDisplay, singleId, viewSingle(id)
     super(props);
     this.state={
-
+      activityId: 0
     }
+
+    this.switchEditActivity = this.switchEditActivity.bind(this);
+  }
+
+  switchEditActivity(id){
+    this.setState({
+      activityId: id,
+    })
   }
 
   render(){
+
     return(
       <div className="main-display">
-        <h2>{this.props.userId !== '0' ? "Your " : "Total "}Monthly Activities</h2>
         <ActivitiesLinechart activities={this.props.activities}/>
-        <ActivitiesList activities={this.props.activities} />
+        <div className="activities-container">
+          <ActivitiesList 
+            activities={this.props.activities} 
+            switchEditActivity={this.switchEditActivity}
+          />
+          <ActivityForm 
+            userId={this.props.userId} 
+            activityId={this.state.activityId}
+            editActivity={this.props.editActivity}
+            addActivity={this.props.addActivity}
+            deleteActivity={this.props.deleteActivity}
+          />
+        </div>
       </div>
     )
   }

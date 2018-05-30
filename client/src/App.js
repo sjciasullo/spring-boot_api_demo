@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 // Import Components needed at top level
 import Header from './components/Header';
-import ActivitiesLinechart from './components/ActivitiesLineChart';
 import MainDisplay from './components/MainDisplay';
 
 // Import Style
@@ -21,6 +20,9 @@ class App extends Component {
     }
 
     this.setUser = this.setUser.bind(this);
+    this.editActivity = this.editActivity.bind(this);
+    this.addActivity = this.addActivity.bind(this);
+    this.deleteActivity = this.deleteActivity.bind(this);
   }
 
   componentDidMount(){
@@ -28,7 +30,7 @@ class App extends Component {
     this.getActivities();
   }
 
-  // Calls to API
+  // ------ Calls to API ------
   getUsers(){
     fetch('http://localhost:8080/users', {
       method: 'GET'
@@ -54,9 +56,10 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
-  // End API calls
+  // ----- End API calls -----
 
-  // Changing State from below App component
+  // ----- Changing State from below App component -----
+
   //sets user which will trickle down changing data
   setUser(id){
     id = id.toString();
@@ -68,16 +71,74 @@ class App extends Component {
       selectedActivities: id !== '0' ? filterActivities : this.state.activities
     })
 
-    // alternative with prevState
+    // alternative using prevState
     /*this.setState(prevState => ({
       userId: id,
       selectedActivities: id !== '0' ? filterActivities : prevState.activities
     }))
     */
-    
   }
 
-  // End State Changers
+  addActivity(addedActivity){
+    // copy arrays from state
+    let activityCopy = [...this.state.activities];
+    let filteredCopy = [...this.state.selectedActivities];
+    // add activity to arrays
+    activityCopy.push(addedActivity);
+    filteredCopy.push(addedActivity);
+    // update state with new arrays
+    this.setState({
+      activities: activityCopy,
+      selectedActivities: filteredCopy
+    })
+  }
+
+  editActivity(editedActivity){
+    // this method is O(n) but better than making an extra API call,
+    // however, with more specifically constructed api, may look different
+
+    // find object in both arrays in state
+    let activityCopy = [...this.state.activities]
+    const activityIndex = activityCopy.findIndex( (element) => {
+      return element.id === editedActivity.id;
+    })
+    let filteredCopy = [...this.state.selectedActivities]
+    const filteredIndex = filteredCopy.findIndex( (element) => {
+      return element.id === editedActivity.id;
+    })
+
+    // update arrays
+    activityCopy[activityIndex] = editedActivity;
+    filteredCopy[filteredIndex] = editedActivity;
+
+    // save in state
+    this.setState({
+      activities: activityCopy,
+      selectedActivities: filteredCopy,
+    })
+  }
+
+  deleteActivity(id){
+    // find object in both arrays in state
+    let activityCopy = [...this.state.activities]
+    const activityIndex = activityCopy.findIndex( (element) => {
+      return element.id === id;
+    })
+    let filteredCopy = [...this.state.selectedActivities]
+    const filteredIndex = filteredCopy.findIndex( (element) => {
+      return element.id === id;
+    })
+    // splice that element from arrays
+    activityCopy.splice(activityIndex, 1);
+    filteredCopy.splice(filteredIndex, 1);
+    // update arrays in state
+    this.setState({
+      activities: activityCopy,
+      selectedActivities: filteredCopy
+    })
+  }
+
+  // ----- End State Changers -----
 
   render() {
     return (
@@ -90,9 +151,13 @@ class App extends Component {
         
         <div className="main-display-container">
           {this.state.activitiesLoaded ? (
-            <MainDisplay 
+            <MainDisplay
+              pageDisplay="all"
               userId={this.state.userId}
               activities={this.state.selectedActivities}
+              editActivity={this.editActivity}
+              addActivity={this.addActivity}
+              deleteActivity={this.deleteActivity}
             />
           ) : (
             <p>Loading. . .</p>
