@@ -89,7 +89,8 @@ class App extends Component {
         
         <div className="main-display-container">
           {this.state.activitiesLoaded ? (
-            <MainDisplay 
+            <MainDisplay
+              pageDisplay="all"
               userId={this.state.userId}
               activities={this.state.selectedActivities}
             />
