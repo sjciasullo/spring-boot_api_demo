@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ActivitiesLinechart from '../components/ActivitiesLineChart';
-import ActivitiesList from '../components/ActivitiesList';
+import ActivitiesLinechart from './ActivitiesLineChart';
+import ActivitiesList from './ActivitiesList';
+import ActivityForm from './ActivityForm';
 
 class MainDisplay extends Component{
   constructor(props){
@@ -28,7 +29,8 @@ class MainDisplay extends Component{
 
     return(
       <div className="main-display">
-        {displayComponents} 
+        {displayComponents}
+        <ActivityForm userId={1} activityId={0}/>
       </div>
     )
   }
