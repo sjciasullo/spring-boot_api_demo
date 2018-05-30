@@ -106,7 +106,7 @@ class ActivityForm extends Component{
       method: 'DELETE'
     }).then(res => res.json())
     .then(json => {
-      //this.props.deleteActivity(this.props.activityId);
+      this.props.deleteActivity(this.props.activityId);
     }).catch(err => console.log(err))
   }
 

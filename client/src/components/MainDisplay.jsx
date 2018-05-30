@@ -36,6 +36,7 @@ class MainDisplay extends Component{
             activityId={this.state.activityId}
             editActivity={this.props.editActivity}
             addActivity={this.props.addActivity}
+            deleteActivity={this.props.deleteActivity}
           />
         </div>
       </div>
