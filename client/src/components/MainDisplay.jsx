@@ -35,6 +35,7 @@ class MainDisplay extends Component{
             userId={this.props.userId} 
             activityId={this.state.activityId}
             editActivity={this.props.editActivity}
+            addActivity={this.props.addActivity}
           />
         </div>
       </div>

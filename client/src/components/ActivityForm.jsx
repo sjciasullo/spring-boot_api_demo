@@ -96,8 +96,7 @@ class ActivityForm extends Component{
       })
     }).then(res => res.json())
     .then(json => {
-      console.log("successful", json);
-      //this.props.postActivity(json);
+      this.props.addActivity(json);
     }).catch(err => console.log("error:", err))
   }
 

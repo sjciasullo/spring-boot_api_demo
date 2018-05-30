@@ -21,6 +21,7 @@ class App extends Component {
 
     this.setUser = this.setUser.bind(this);
     this.editActivity = this.editActivity.bind(this);
+    this.addActivity = this.addActivity.bind(this);
   }
 
   componentDidMount(){
@@ -76,7 +77,19 @@ class App extends Component {
     */
   }
 
-  //addActivity
+  addActivity(addedActivity){
+    // copy arrays from state
+    let activityCopy = [...this.state.activities];
+    let filteredCopy = [...this.state.selectedActivities];
+    // add activity to arrays
+    activityCopy.push(addedActivity);
+    filteredCopy.push(addedActivity);
+    // update state with new arrays
+    this.setState({
+      activites: activityCopy,
+      selectedActivities: filteredCopy
+    })
+  }
 
   editActivity(editedActivity){
     // this method is O(n) but better than making an extra API call,
@@ -123,6 +136,7 @@ class App extends Component {
               userId={this.state.userId}
               activities={this.state.selectedActivities}
               editActivity={this.editActivity}
+              addActivity={this.addActivity}
             />
           ) : (
             <p>Loading. . .</p>
