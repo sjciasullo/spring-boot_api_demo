@@ -20,7 +20,7 @@ class MainDisplay extends Component{
         <ActivitiesLinechart activities={this.props.activities}/>
         <div className="activities-container">
           <ActivitiesList activities={this.props.activities} />
-          <ActivityForm userId={0} activityId={0}/>
+          <ActivityForm userId={this.props.userId} activityId={0}/>
         </div>
       </div>
     )
