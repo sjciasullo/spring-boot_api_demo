@@ -80,6 +80,27 @@ class ActivityForm extends Component{
     }).catch(err => console.log(err))
   }
 
+  // after posting, add to top state arrays
+  postActivity(){
+    fetch("http://localhost:8080/activities", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        activityName: this.state.activityName || "default",
+        userId: this.props.userId,
+        month: this.state.month || "month",
+        totalMinutes: this.state.totalMinutes || 0,
+        notes: this.state.notes
+      })
+    }).then(res => res.json())
+    .then(json => {
+      console.log("successful", json);
+      //this.props.postActivity(json);
+    }).catch(err => console.log("error:", err))
+  }
+
   // ------ FETCHING ------
   
   // ------ FORM HANDLERS ------
@@ -97,7 +118,7 @@ class ActivityForm extends Component{
     event.preventDefault();
     if(this.props.activityId === 0){
       // post new
-      // then add in top state
+      this.postActivity();
     } else {
       // patch it
       this.patchActivity(activityId);      

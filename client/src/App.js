@@ -68,7 +68,7 @@ class App extends Component {
       selectedActivities: id !== '0' ? filterActivities : this.state.activities
     })
 
-    // alternative with prevState
+    // alternative using prevState
     /*this.setState(prevState => ({
       userId: id,
       selectedActivities: id !== '0' ? filterActivities : prevState.activities
@@ -79,6 +79,9 @@ class App extends Component {
   //addActivity
 
   editActivity(editedActivity){
+    // this method is O(n) but better than making an extra API call,
+    // however, with more specifically constructed api, may look different
+
     // find object in both arrays in state
     let activityCopy = [...this.state.activities]
     const activityIndex = activityCopy.findIndex( (element) => {
@@ -98,7 +101,6 @@ class App extends Component {
       activities: activityCopy,
       selectedActivities: filteredCopy,
     })
-
   }
 
   //deleteActivity
