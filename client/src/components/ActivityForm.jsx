@@ -16,6 +16,10 @@ class ActivityForm extends Component{
   }
 
   componentDidMount(){
+    this.getActivity();
+  }
+
+  getActivity(){
     const activityId = this.props.activityId;
     // if activity is 0 then we are trying to create a new activity
     if(activityId !== 0){
