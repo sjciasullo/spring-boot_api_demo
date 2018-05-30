@@ -13,8 +13,10 @@ class ActivityForm extends Component{
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // ------ LIFE CYCLE ------
   componentDidMount(){
     this.getActivity(this.props.activityId);
   }
@@ -36,8 +38,9 @@ class ActivityForm extends Component{
       }
     }
   }
-  
+  // ------ END LIFE CYCLE ------
 
+  // ------ FETCHING ------
   getActivity(id){
     // if activity is 0 then we are trying to create a new activity
     if(id !== 0){
@@ -59,6 +62,27 @@ class ActivityForm extends Component{
     }
   }
 
+  //after patching activity, update in top state
+  patchActivity(id){
+    fetch(`http://localhost:8080/activities/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        activityName: this.state.activityName,
+        totalMinutes: this.state.totalMinutes,
+        notes: this.state.notes
+      })
+    }).then(res => res.json())
+    .then(json => {
+      console.log(json);
+    }).catch(err => console.log(err))
+  }
+
+  // ------ FETCHING ------
+  
+  // ------ FORM HANDLERS ------
   handleInputChange(event){
     const name = event.target.name
     const value = event.target.value
@@ -69,14 +93,18 @@ class ActivityForm extends Component{
 
   // need to send put request with userId as well 
   handleSubmit(event){
+    const activityId = this.props.activityId;
     event.preventDefault();
     if(this.props.activityId === 0){
       // post new
+      // then add in top state
     } else {
       // patch it
+      this.patchActivity(activityId);
     }
 
   }
+  // ------ END FORM HANLDERS ------
 
   render(){
     return(

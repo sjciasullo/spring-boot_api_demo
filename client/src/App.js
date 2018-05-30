@@ -73,8 +73,13 @@ class App extends Component {
       selectedActivities: id !== '0' ? filterActivities : prevState.activities
     }))
     */
-    
   }
+
+  //addActivity
+
+  //editActivity
+
+  //deleteActivity
 
   // End State Changers
 
