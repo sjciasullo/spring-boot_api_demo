@@ -6,8 +6,9 @@ class ActivityForm extends Component{
     super(props);
     this.state = {
       apiLoaded: false,
-      totalMinutes: 0,
+      totalMinutes: "",
       activityName: "",
+      month: "",
       notes: ""
     }
 
@@ -63,12 +64,21 @@ class ActivityForm extends Component{
               <input name="activityName" onChange={this.handleInputChange} type="text" 
                 placeholder="Activity Name" value={this.state.activityName}
               />
-              <input name="totalMinutes" onChange={this.handleInputChange} type="text"  
+              <br />
+              {this.props.activityId === 0 && (
+                <input name="month" onChange={this.handleInputChange} type="text" 
+                placeholder="Month" value={this.state.month}
+              />
+              )}
+              {this.props.activityId === 0 && <br />}
+              <input name="totalMinutes" onChange={this.handleInputChange} type="number"  
                 placeholder="Total Minutes" value={this.state.totalMinutes}
               />
+              <br />
               <input name="notes" onChange={this.handleInputChange} type="text"
                 placeholder="Notes" value={this.state.notes}
               />
+              <br />
               <input type="submit" value="submit"/>
             </form>
           </div>

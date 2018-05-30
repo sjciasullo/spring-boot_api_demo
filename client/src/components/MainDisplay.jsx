@@ -30,7 +30,7 @@ class MainDisplay extends Component{
     return(
       <div className="main-display">
         {displayComponents}
-        <ActivityForm userId={1} activityId={1}/>
+        <ActivityForm userId={1} activityId={0}/>
       </div>
     )
   }
