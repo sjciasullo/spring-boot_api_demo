@@ -9,8 +9,17 @@ class MainDisplay extends Component{
     // userId, activities, pageDisplay, singleId, viewSingle(id)
     super(props);
     this.state={
-      
+      activityId: 0
     }
+
+    this.switchEditActivity = this.switchEditActivity.bind(this);
+  }
+
+  switchEditActivity(id){
+    console.log("trying to switch to active edited id");
+    this.setState({
+      activityId: id,
+    })
   }
 
   render(){
@@ -19,8 +28,11 @@ class MainDisplay extends Component{
       <div className="main-display">
         <ActivitiesLinechart activities={this.props.activities}/>
         <div className="activities-container">
-          <ActivitiesList activities={this.props.activities} />
-          <ActivityForm userId={this.props.userId} activityId={0}/>
+          <ActivitiesList 
+            activities={this.props.activities} 
+            switchEditActivity={this.switchEditActivity}
+          />
+          <ActivityForm userId={this.props.userId} activityId={this.state.activityId}/>
         </div>
       </div>
     )
