@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../styles/MainDisplay.css';
+
 import ActivitiesLinechart from './ActivitiesLineChart';
 import ActivitiesList from './ActivitiesList';
 import ActivityForm from './ActivityForm';
