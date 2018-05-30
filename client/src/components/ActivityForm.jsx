@@ -79,7 +79,12 @@ class ActivityForm extends Component{
                 placeholder="Notes" value={this.state.notes}
               />
               <br />
-              <input type="submit" value="submit"/>
+              {this.props.userId === 0 ? (
+                <h3>Please select a user before submitting!</h3>
+              ) : (
+                <input type="submit" value="Save"/>
+              )}
+              
             </form>
           </div>
           
