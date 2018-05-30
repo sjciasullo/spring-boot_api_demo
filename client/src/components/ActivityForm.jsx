@@ -10,6 +10,8 @@ class ActivityForm extends Component{
       activityName: "",
       notes: ""
     }
+
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount(){
@@ -49,24 +51,28 @@ class ActivityForm extends Component{
 
   render(){
     return(
-      <div className="activity-single">
+      <div className="activity-form-container">
         <h2>{this.props.activityId !== 0? 'Edit ' : 'Create '}Activity</h2>
         {this.state.apiLoaded && (
-          <form onSubmit={this.handleSubmit}>
-            <input name="userId" onChange={this.handleInputChange} type="hidden"  
-              value={this.props.userId}
-            />
-            <input name="activityName" onChange={this.handleInputChange} type="text" 
-              placeholder="Activity Name" value={this.state.activityName}
-            />
-            <input name="totalMinutes" onChange={this.handleInputChange} type="text"  
-              placeholder="Total Minutes" value={this.state.totalMinutes}
-            />
-            <input name="notes" onChange={this.handleInputChange} type="text"
-              placeholder="Notes" value={this.state.notes}
-            />
-            <input type="submit" value="submit"/>
-          </form>
+          <div className="form-wrapper">
+          {/* conditional for user is not correct */}
+            <form onSubmit={this.handleSubmit}>
+              <input name="userId" onChange={this.handleInputChange} type="hidden"  
+                value={this.props.userId}
+              />
+              <input name="activityName" onChange={this.handleInputChange} type="text" 
+                placeholder="Activity Name" value={this.state.activityName}
+              />
+              <input name="totalMinutes" onChange={this.handleInputChange} type="text"  
+                placeholder="Total Minutes" value={this.state.totalMinutes}
+              />
+              <input name="notes" onChange={this.handleInputChange} type="text"
+                placeholder="Notes" value={this.state.notes}
+              />
+              <input type="submit" value="submit"/>
+            </form>
+          </div>
+          
         )}
       </div>
     )
