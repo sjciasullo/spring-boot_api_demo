@@ -14,6 +14,7 @@ class ActivityForm extends Component{
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteActivity = this.deleteActivity.bind(this);
   }
 
   // ------ LIFE CYCLE ------
@@ -100,6 +101,15 @@ class ActivityForm extends Component{
     }).catch(err => console.log("error:", err))
   }
 
+  deleteActivity(){
+    fetch(`http://localhost:8080/activities/${this.props.activityId}`, {
+      method: 'DELETE'
+    }).then(res => res.json())
+    .then(json => {
+      //this.props.deleteActivity(this.props.activityId);
+    }).catch(err => console.log(err))
+  }
+
   // ------ FETCHING ------
   
   // ------ FORM HANDLERS ------
@@ -159,6 +169,9 @@ class ActivityForm extends Component{
                 <h3>Please select a user before submitting!</h3>
               ) : (
                 <input type="submit" value="Save"/>
+              )}
+              {this.props.activityId !== 0 && (
+                <button onClick={this.deleteActivity}>Delete</button>
               )}
               
             </form>
