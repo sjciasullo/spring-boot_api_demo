@@ -5,10 +5,6 @@ function ActivitiesList(props){
   const activities = props.activities;
   const switchEditActivity = props.switchEditActivity;
 
-  function clickActivity(event){
-    console.log(event);
-  }
-
   // create list tags
   const activitiesListTags = activities.map((activity) => {
     return (
