@@ -23,12 +23,10 @@ class ActivityForm extends Component{
     this.getActivity(this.props.activityId);
   }
 
-  // deal with getting next activity 
-  // alternative would be getting the activity in main display and passing it down,
-  // but alas this would not reset the state
-  componentWillReceiveProps(nextProps){
-    if(nextProps.activityId !== this.props.activityId){
-      if(nextProps.activityId === 0){
+  // changed from componentWillReceiveProps
+  componentDidUpdate(prevProps){
+    if(prevProps.activityId !== this.props.activityId){
+      if(this.props.activityId === 0){
         this.setState({
           totalMinutes: "",
           activityName: "",
@@ -36,7 +34,7 @@ class ActivityForm extends Component{
           notes: ""
         })
       } else {
-        this.getActivity(nextProps.activityId);
+        this.getActivity(this.props.activityId);
       }
     }
   }
