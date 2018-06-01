@@ -36,7 +36,6 @@ class App extends Component {
       method: 'GET'
     }).then(res => res.json())
     .then(json => {
-      console.log("users: ", json);
       this.setState({
         users: json,
         usersLoaded: true
@@ -65,12 +64,6 @@ class App extends Component {
   setUser(id){
     //id = id.toString();
     let filterActivities = this.state.activities.filter(activity => activity.userId === id);
-    console.log("id: ", id);
-    console.log(id == 4);
-    console.log(id === 4);
-    console.log(typeof id);
-    console.log("filtered: ", filterActivities);
-    console.log("unfiltered: ", this.state.activities);
 
     //this may be bad form because changing the state based on prevState
     this.setState({
