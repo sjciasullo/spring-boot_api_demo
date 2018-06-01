@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/VisualContainer.css';
 import ActivitiesLinechart from './ActivitiesLineChart';
 
 class VisualContainer extends Component {

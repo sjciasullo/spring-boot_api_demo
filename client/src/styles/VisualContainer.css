@@ -1,0 +1,17 @@
+.visual-container{
+  display: flex;
+}
+
+.tab-holder{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;  
+}
+
+.tab{
+  height: 50px;
+  transform: rotate(270deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
