@@ -5,15 +5,34 @@
 .tab-holder{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   max-width: 70px;
+  margin-left: -70px;
 }
 
 .tab{
   height: 50px;
-  padding: 0px 50px 0px 50px;
+  padding: 10px 80px 10px 80px;
+  margin-top: -10px;
+  margin-left: -30px;
   transform: rotate(270deg);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.selected{
+  box-shadow: -20px -2px 30px -13px rgba(219,219,219,1);
+  border-left: 2px solid #ccc;
+  border-top: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 22px;
+  margin-top: 22px;
+}
+
+.unselected:hover{
+  text-decoration: underline;
+  
+  border: 1px solid #eee;
 }

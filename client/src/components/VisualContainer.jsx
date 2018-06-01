@@ -33,8 +33,8 @@ class VisualContainer extends Component {
     return (
       <div className='visual-container'>
         <div className='tab-holder'>
-          <div className='tab'>Graph</div>
-          <div className='tab'>Map</div>
+          <div className={'tab ' + 'unselected'}>Graph</div>
+          <div className={'tab ' + 'selected'}>Map</div>
         </div>
         {VisualComponent}
       </div>
