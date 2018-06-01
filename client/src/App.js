@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       usersLoaded: false,
       users: [],
-      userId: '0', // id of selected user
+      userId: 0, // id of selected user
       activitiesLoaded: false,
       activities: [],
       selectedActivities: []
@@ -62,13 +62,13 @@ class App extends Component {
 
   //sets user which will trickle down changing data
   setUser(id){
-    id = id.toString();
-    let filterActivities = this.state.activities.filter(activity => activity.userId == id);
+    //id = id.toString();
+    let filterActivities = this.state.activities.filter(activity => activity.userId === id);
 
     //this may be bad form because changing the state based on prevState
     this.setState({
       userId: id,
-      selectedActivities: id !== '0' ? filterActivities : this.state.activities
+      selectedActivities: id !== 0 ? filterActivities : this.state.activities
     })
 
     // alternative using prevState
