@@ -11,6 +11,8 @@ function Header(props){
   const setUser = props.setUser;
 
   function clickUser(event){
+    console.log(event.target.value);
+    console.log(typeof event.target.value)
     const selectedId = event.target.value;
     if(selectedId !== userId){
       setUser(selectedId);
