@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/VisualContainer.css';
 import ActivitiesLinechart from './ActivitiesLineChart';
+import GoogleMap from './GoogleMap';
 
 class VisualContainer extends Component {
   constructor(props) {
@@ -29,6 +30,9 @@ class VisualContainer extends Component {
     switch(this.state.visual){
       case "LineChart":
         VisualComponent = <ActivitiesLinechart activities={this.props.activities}/>;
+        break;
+      case "Map":
+        VisualComponent = <GoogleMap activities={this.props.activities}/>;
         break;
       default:
         VisualComponent = <p>An error has occurred!</p>
