@@ -20,6 +20,10 @@ class VisualContainer extends Component {
     })
   }
 
+  getTabSelected(tab){
+    return tab === this.state.visual ? "selected" : "unselected";
+  }
+
   render() {
     let VisualComponent = null;
     switch(this.state.visual){
@@ -33,8 +37,16 @@ class VisualContainer extends Component {
     return (
       <div className='visual-container'>
         <div className='tab-holder'>
-          <div className={'tab ' + 'unselected'}>Graph</div>
-          <div className={'tab ' + 'selected'}>Map</div>
+          <div 
+            className={"tab " + this.getTabSelected("LineChart")}
+            onClick={() => this.changeTab("LineChart")}>
+            Graph
+          </div>
+          <div 
+            className={'tab ' + this.getTabSelected("Map")}
+            onClick={() => this.changeTab("Map")}>
+            Map
+          </div>
         </div>
         {VisualComponent}
       </div>
