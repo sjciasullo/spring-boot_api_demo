@@ -4,6 +4,8 @@
 A client has outlined a need for a new full-stack dashboard app
 You will design, develop, and architect a full-stack app with Spring Boot and Spring Framework. This application uses a front-end dashboard built in `React`.
 
+## 
+
 ## Technologies
 - Spring Boot, Docker, React, Recharts
 
@@ -79,4 +81,12 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
 - web app vs mobile?
     - mobile might give possible reminder each day to log your activities for the day?
     - could use as much as user wants but it might be a full day log
-
+    - landing page gives some stats? or progress page to check on goals?
+- Adding goals for users
+    - number of minutes over certain time frame in certain category
+- User Interface for web app ideas
+    - tabs left of graph allow for switching between graph and map
+    - sub menu (nav bar below header) middle is recent months, left is all time, right is today or week?
+        - this or allowing for just a time frame above graph which means getting all of users data and filtering by date
+    - implement app using redux
+    - re-design using Google's Material UI
