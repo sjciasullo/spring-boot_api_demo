@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/VisualContainer.css';
 import ActivitiesLinechart from './ActivitiesLineChart';
-import GoogleMap from './GoogleMap';
+import MapContainer from './MapContainer';
 
 class VisualContainer extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class VisualContainer extends Component {
         VisualComponent = <ActivitiesLinechart activities={this.props.activities}/>;
         break;
       case "Map":
-        VisualComponent = <GoogleMap activities={this.props.activities}/>;
+        VisualComponent = <MapContainer activities={this.props.activities}/>;
         break;
       default:
         VisualComponent = <p>An error has occurred!</p>

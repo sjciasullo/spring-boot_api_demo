@@ -1,11 +1,10 @@
 import React from 'react';
-import '../styles/GoogleMap.css';
+import '../styles/MapContainer.css';
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
-function GoogleMap(props) {
+function MapContainer(props) {
   // will take array of locations as a prop
-  console.log(API_KEY);
   return(
     <div className='map-container'>
       <p>This will be a map</p>
@@ -14,4 +13,4 @@ function GoogleMap(props) {
   
 }
 
-export default GoogleMap;
+export default MapContainer;
