@@ -54,7 +54,7 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
 ## To-do features
 1. Google Map API feature
     1. Create client visual for it
-        1. stub map component
+        1. ~~stub map component~~
         2. create visual wrapper component to tab between graph and map
         3. create dummy data for map and test map rendering
         4. add form input for location
