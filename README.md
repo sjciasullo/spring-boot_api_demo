@@ -4,6 +4,9 @@
 A client has outlined a need for a new full-stack dashboard app
 You will design, develop, and architect a full-stack app with Spring Boot and Spring Framework. This application uses a front-end dashboard built in `React`.
 
+## Technologies
+- Spring Boot, Docker, React, Recharts
+
 ## Running Instructions
 1. Turn on Docker application
 2. Navigate to project repository in Command Line Interface
@@ -11,6 +14,7 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
 4. Execute 'npm start' from client
 5. Switch users with select option to view different data subsets
 6. Create, Update, or Delete a user's data to see visual change
+7. To turn off, "ctrl + c" to exit react app, "ctrl + c" and "docker-compose down" to turn off server
 
 ## Application Design
 - Main dashboard view to see what types of activites people are doing
