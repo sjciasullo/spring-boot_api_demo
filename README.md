@@ -4,12 +4,13 @@
 A client has outlined a need for a new full-stack dashboard app
 You will design, develop, and architect a full-stack app with Spring Boot and Spring Framework. This application uses a front-end dashboard built in `React`.
 
-## Models
-
-- user table with user_name, tagline
-- ~~meditation~~ activities table with date, user_id, minutes, (string) type, (string) notes
-    - mvp: use String month, not date
-    - change table name to reflect an activity log tracker allowing for a person to log their minutes for any type of activity
+## Running Instructions
+1. Turn on Docker application
+2. Navigate to project repository in Command Line Interface
+3. Execute 'docker-compose up' from spring api directory
+4. Execute 'npm start' from client
+5. Switch users with select option to view different data subsets
+6. Create, Update, or Delete a user's data to see visual change
 
 ## Application Design
 - Main dashboard view to see what types of activites people are doing
@@ -28,9 +29,41 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
     - can create a new activity for that month
     - can edit any activity, delete or create new one (same click pencil idea as header)
 
-## Possible Features and Improvements
+## Models
+
+- user table with user_name, tagline
+- ~~meditation~~ activities table with date, user_id, minutes, (string) type, (string) notes
+    - mvp: use String month, not date
+    - change table name to reflect an activity log tracker allowing for a person to log their minutes for any type of activity
+
+## To-do features
+1. Google Map API feature
+    1. Create client visual for it
+        1. stub map component
+        2. create visual wrapper component to tab between graph and map
+        3. create dummy data for map and test map rendering
+        4. add form input for location
+        5. touch google api to autofill location
+        6. stub a location field or latitude, longitude in sending post/put
+    2. Update activities model to account for lat and long
+    3. hook together sending post/put to lat and long
+2. Re-organize model structure
+    1. using category table rather than "name" of activity
+        - does this keep track of user_id and use a hook to update sum of minutes?
+        - keeping track of sum allows for pie chart visual... (would this be landing page?), if we know num of entries or provide an endpoint for this, we can calculate the avg so the user can see their stats for an activity with the graph for it
+        - OR having an endpoint to depict growth over time?
+            - or just get all activities by category id and client can have functionality to switch graph between each data point or summing for gradual growth
+        - allow for graph component to have a dropdown to select activity?
+    2. (out of order) change "month" column to a date type
+        1. THIS BREAKS THE GRAPH AND FORM BIG TIME
+        2. add date handling on front end to convert to inputs to correct type for db
+        3. how do we handle the no user landing page graph? (get activites between certain dates?)
+
+## Possible Future Features and Improvements
 - use actual date for month column of activities
 - protect individual activity data, user auth
+    - landing page is modeled after Facebook with create user on right, demo graph on left, login at top
+    - allows for routing as well with edit user, user stats, and user category, maybe a user daily
 - potential to reorganize database for putting entries into table for daily activities
     - this would use the date type in db
     - still keep month views or maybe it depends on the span of time of recent entries
@@ -43,9 +76,3 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
     - mobile might give possible reminder each day to log your activities for the day?
     - could use as much as user wants but it might be a full day log
 
-## Running Instructions
-1. Turn on Docker application
-2. Navigate to project repository in Command Line Interface
-3. Execute 'docker-compose up' from spring api directory
-4. Execute 'npm start' from client
-5. Switch users with select option to view different data subsets
