@@ -4,7 +4,16 @@
 A client has outlined a need for a new full-stack dashboard app
 You will design, develop, and architect a full-stack app with Spring Boot and Spring Framework. This application uses a front-end dashboard built in `React`.
 
-## 
+## Client Proposal
+- Problem statement from the client
+- What business problem are you trying to solve with technology?
+- Technical requirements of solving the business problem
+    - construct database structure to represent data client wants to save
+    - construct API out of database with endpoints to allow for client interaction
+    - construct simple user interface with ability to manipulate data
+    - deployment of server with database and front end touching api
+- External case study that demonstrates a similar problem/solution
+
 
 ## Technologies
 - Spring Boot, Docker, React, Recharts
