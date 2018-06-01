@@ -8,15 +8,23 @@ export class MapContainer extends Component {
   // will take array of locations as a prop
 
   render() {
+    const MAP_STYLE = {
+      width: '730px',
+      height: '400px',
+      marginLeft: '30px'
+    }
+    
     return(
-      
-        <Map google={this.props.google} zoom={14}>
+      <div className="map-container">
+        <Map 
+          google={this.props.google} 
+          zoom={14}
+          style={MAP_STYLE}
+        >
         </Map>
-      
+      </div>
     )
   }
-  
-  
 }
 
 export default GoogleApiWrapper({
