@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../styles/MainDisplay.css';
 
-import ActivitiesLinechart from './ActivitiesLineChart';
 import ActivitiesList from './ActivitiesList';
 import ActivityForm from './ActivityForm';
+import VisualContainer from './VisualContainer'
 
 class MainDisplay extends Component{
   constructor(props){
@@ -27,7 +27,7 @@ class MainDisplay extends Component{
 
     return(
       <div className="main-display">
-        <ActivitiesLinechart activities={this.props.activities}/>
+        <VisualContainer activities={this.props.activities}/>
         <div className="activities-container">
           <ActivitiesList 
             activities={this.props.activities} 
