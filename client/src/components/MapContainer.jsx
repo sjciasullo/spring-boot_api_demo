@@ -32,7 +32,6 @@ export class MapContainer extends Component {
   }
 
   render() {
-    
     // create bounds object for setting the map bounds
     let bounds = new this.props.google.maps.LatLngBounds();
 
@@ -43,7 +42,6 @@ export class MapContainer extends Component {
         <Marker key={index} name={"point" + index} position={point} />
       )
     })
-    console.log(bounds);
 
     const MAP_STYLE = {
       width: '730px',
