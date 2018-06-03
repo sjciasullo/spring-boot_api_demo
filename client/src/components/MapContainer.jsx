@@ -43,6 +43,7 @@ export class MapContainer extends Component {
       )
     })
 
+    // styles for map
     const MAP_STYLE = {
       width: '730px',
       height: '400px',
@@ -52,10 +53,8 @@ export class MapContainer extends Component {
     return(
       <div className="map-container">
         <Map 
-          // ref={map => "map" && this.refs.map.fitBounds(bounds)}
           ref="mapper"
           google={this.props.google} 
-          // zoom={14}
           style={MAP_STYLE}
           initialCenter={{lat: 0, lng: 0}}
           bounds={bounds}
