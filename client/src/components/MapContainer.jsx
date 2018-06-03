@@ -27,6 +27,10 @@ export class MapContainer extends Component {
     this.refs.mapper.map.fitBounds(this.refs.mapper.props.bounds);
   }
 
+  componentDidUpdate(){
+    this.refs.mapper.map.fitBounds(this.refs.mapper.props.bounds);
+  }
+
   render() {
     
     // create bounds object for setting the map bounds
