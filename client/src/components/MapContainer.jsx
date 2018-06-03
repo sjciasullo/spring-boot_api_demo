@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import '../styles/MapContainer.css';
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
@@ -13,16 +13,53 @@ const POINTS = [
 ]
 
 // using method from https://www.npmjs.com/package/google-maps-react
+// markerClick methods as described in package spec 
 
 export class MapContainer extends Component {
-  constructor(props){
-    super(props);
-    this.state={};
-  }
-
   // will take array of activities as a prop
   // and in map marker creating can specify name, position{lat, long}, title
+  constructor(props){
+    super(props);
+    this.state={
+      activeMarker: {},
+      selectedPlace: {},
+      showingInfoWindow: false
+    };
 
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.onInfoWindowClose = this.onInfoWindowClose.bind(this);
+    this.onMapClick = this.onMapClick.bind(this);
+  }
+
+  // ----- MARKER_INFO METHODS -----
+  // turns on info window for marker
+  onMarkerClick(props, marker){
+    this.setState({
+      activeMarker: marker,
+      selectedPlace: props,
+      showingInfoWindow: true
+    });
+  }
+
+  // turns off showing window for marker
+  onInfoWindowClose(){
+    this.setState({
+      activeMarker: null,
+      showingInfoWindow: false
+    });
+  }
+
+  // turns off showing window if map clicked when info on
+  onMapClick(){
+    this.setState({
+      activeMarker: null,
+      showingInfoWindow: false
+    });
+  }
+  // ----- END MARKER_INFO METHODS -----
+
+
+  // ----- LIFECYCLE METHODS FOR BOUNDS -----
   componentDidMount(){
     this.refs.mapper.map.fitBounds(this.refs.mapper.props.bounds);
   }
@@ -39,7 +76,12 @@ export class MapContainer extends Component {
     const markerComponents = POINTS.map((point, index) =>{
       bounds.extend(point);
       return (
-        <Marker key={index} name={"point" + index} position={point} />
+        <Marker 
+          key={index} 
+          name={"point" + index} 
+          position={point} 
+          onClick={this.onMarkerClick}
+        />
       )
     })
 
@@ -58,8 +100,18 @@ export class MapContainer extends Component {
           style={MAP_STYLE}
           initialCenter={{lat: 0, lng: 0}}
           bounds={bounds}
+          onClick={this.onMapClick}
         >
           {markerComponents}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            onClose={this.onInfoWindowClose}
+            visible={this.state.showingInfoWindow}
+          >
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+          </InfoWindow>
         </Map>
       </div>
     )
