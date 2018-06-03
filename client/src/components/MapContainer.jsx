@@ -7,8 +7,29 @@ const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 // using method from https://www.npmjs.com/package/google-maps-react
 
 export class MapContainer extends Component {
+  constructor(props){
+    super(props);
+    this.state={};
+  }
+
   // will take array of activities as a prop
   // and in map marker creating can specify name, position{lat, long}, title
+
+  componentDidMount(){
+    const points = [
+      {lat: 25.774, lng: -80.190},
+      {lat: 18.466, lng: -66.118},
+      {lat: 32.321, lng: -64.757},
+      {lat: 25.774, lng: -80.190}
+    ]
+    var bounds = new this.props.google.maps.LatLngBounds();
+
+    // map through points to create markers while extending the bounds on map for each
+    const markerComponents = points.map((point, index) =>{
+      bounds.extend(point);
+    })
+    this.refs.mapper.map.fitBounds(bounds);
+  }
 
   render() {
     // dummy data
@@ -19,12 +40,17 @@ export class MapContainer extends Component {
       {lat: 25.774, lng: -80.190}
     ]
 
-    //map through markers
+    // create bounds object for setting the map bounds
+    var bounds = new this.props.google.maps.LatLngBounds();
+
+    // map through points to create markers while extending the bounds on map for each
     const markerComponents = points.map((point, index) =>{
+      bounds.extend(point);
       return (
         <Marker key={index} name={"point" + index} position={point} />
       )
     })
+    console.log(bounds);
 
     const MAP_STYLE = {
       width: '730px',
@@ -35,9 +61,13 @@ export class MapContainer extends Component {
     return(
       <div className="map-container">
         <Map 
+          // ref={map => "map" && this.refs.map.fitBounds(bounds)}
+          ref="mapper"
           google={this.props.google} 
-          zoom={14}
+          // zoom={14}
           style={MAP_STYLE}
+          initialCenter={{lat: 0, lng: 0}}
+          bounds={bounds}
         >
           {markerComponents}
         </Map>
