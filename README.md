@@ -45,7 +45,6 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
     - can edit any activity, delete or create new one (same click pencil idea as header)
 
 ## Models
-
 - user table with user_name, tagline
 - ~~meditation~~ activities table with date, user_id, minutes, (string) type, (string) notes
     - mvp: use String month, not date
@@ -56,7 +55,7 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
     1. Create client visual for it
         1. ~~stub map component~~
         2. ~~create visual wrapper component to tab between graph and map~~
-        3. create dummy data for map and test map rendering
+        3. ~~create dummy data for map and test map rendering~~
         4. add form input for location
         5. touch google api to autofill location
         6. stub a location field or latitude, longitude in sending post/put
