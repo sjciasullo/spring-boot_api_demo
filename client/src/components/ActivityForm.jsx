@@ -132,7 +132,6 @@ class ActivityForm extends Component{
       // patch it
       this.patchActivity(activityId);      
     }
-
   }
   // ------ END FORM HANLDERS ------
 
@@ -142,38 +141,44 @@ class ActivityForm extends Component{
         <h2>{this.props.activityId !== 0? 'Edit ' : 'Create '}Activity</h2>
         {this.state.apiLoaded && (
           <div className="form-wrapper">
-          {/* conditional for user is not correct */}
             <form onSubmit={this.handleSubmit}>
-              <input name="userId" onChange={this.handleInputChange} type="hidden"  
-                value={this.props.userId}
-              />
+
               <input name="activityName" onChange={this.handleInputChange} type="text" 
                 placeholder="Activity Name" value={this.state.activityName}
               />
               <br />
+
               <input name="location" onChange={this.handleInputChange} type="text" 
                 placeholder="Location" value={this.state.location}
               />
               <br />
+
+              {/* only show date input for a new activity */}
               {this.props.activityId === 0 && (
                 <input name="month" onChange={this.handleInputChange} type="text" 
-                placeholder="Month" value={this.state.month}
-              />
+                  placeholder="Month" value={this.state.month}
+                />
               )}
               {this.props.activityId === 0 && <br />}
+
               <input name="totalMinutes" onChange={this.handleInputChange} type="number"  
                 placeholder="Total Minutes" value={this.state.totalMinutes}
               />
               <br />
+
               <input name="notes" onChange={this.handleInputChange} type="text"
                 placeholder="Notes" value={this.state.notes}
               />
               <br />
+
+              {/* only show save button if a user is selected */}
               {this.props.userId === 0 ? (
                 <h3>Please select a user before submitting!</h3>
               ) : (
                 <input type="submit" value="Save"/>
               )}
+
+              {/* only show delete button if an activity is selected */}
               {this.props.activityId !== 0 && (
                 <button id="delete" onClick={this.deleteActivity}>Delete</button>
               )}
