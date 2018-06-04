@@ -11,4 +11,10 @@
 05.30.2018 : Add Create_UpdateDestroy to client functionality via form \
 05.31.2018 : Create re-design for model addressing current issues and UI needs \
 06.01.2018 : Fix bug causing error in React client \
-06.01.2018 : Construct plan of action for adding features
+06.01.2018 : Construct plan of action for adding features \
+06.01.2018 : Implement map display for client using tabs selection \
+06.03.2018 : Dynamically create bounds for map using markers \
+06.03.2018 : Test Google Places API for location finding \
+06.03.2018 : Create input to handle location \
+06.04.2018 : Change direction based on location error \ 
+06.04.2018 : implement location input with autocomplete package \
