@@ -14,3 +14,5 @@
 5. map wrapper is not sizing which blocks form
     - Solution: https://github.com/fullstackreact/google-maps-react/issues/26
         - found a containerStyle prop for map to set display to relative
+6. Google Maps API is trying to double download in map component and for autocomplete component
+    - Solution: try wrapping form in HoC from map package
