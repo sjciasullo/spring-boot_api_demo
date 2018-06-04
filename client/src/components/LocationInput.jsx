@@ -11,6 +11,23 @@ class LocationInput extends Component {
     };
   }
 
+  handleChange(address){
+    // needs to be bound?
+    this.setState({
+      address: address
+    })
+  }
+
+  handleSelect(address){
+    // uses google api to get the location's info
+    geocodeByAddress(address)
+      // this will really set the latlng in parent in step 2
+      // will we need to pass the whole handle select down from activity form ?
+      .then(results = getLatLng(results[0]))
+      .then(latLng => console.log("Success: ", latLng)) 
+      .catch(error => console.log("Error: ", err))
+  }
+
   render() {
     return (
       <PlacesAutocomplete
