@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 // uses example from package https://www.npmjs.com/package/react-places-autocomplete
 
+import '../styles/LocationInput.css';
+
 class LocationInput extends Component {
   // this could be functional component once state is handled above
   constructor(props) {
@@ -58,7 +60,7 @@ class LocationInput extends Component {
           <div>
             <input
               {...getInputProps({
-                placeholder: "Search places ...",
+                placeholder: "Location",
                 className: "location-search-input"
               })}
             />
@@ -66,8 +68,9 @@ class LocationInput extends Component {
               {suggestions.map(suggestion => {
                 const className = suggestion.active ? "suggestion-item--active" : "suggestion-item";
                 const style = suggestion.active
-                  ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                  : { backgroundColor: "#ffffff", cursor: "pointer" };
+                  ? { backgroundColor: "#ccc", cursor: "pointer" }
+                  : { backgroundColor: "#fff", cursor: "pointer" };
+                style.border = "solid 1px #ccc"
                 return (
                   <div {...getSuggestionItemProps(suggestion, { className, style })}>
                     <span>{suggestion.description}</span>
