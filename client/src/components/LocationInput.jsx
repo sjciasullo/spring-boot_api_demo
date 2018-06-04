@@ -1,6 +1,6 @@
 import React from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
-// uses example from package https://www.npmjs.com/package/react-places-autocomplete
+// uses example from package https://github.com/kenny-hibino/react-places-autocomplete
 
 import '../styles/LocationInput.css';
 

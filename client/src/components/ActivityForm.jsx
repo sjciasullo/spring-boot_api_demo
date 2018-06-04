@@ -14,6 +14,8 @@ class ActivityForm extends Component{
       apiLoaded: false,
       activityName: "",
       location: "",
+      lat: null,
+      lng: null,
       totalMinutes: "",
       month: "",
       notes: ""
@@ -154,33 +156,19 @@ class ActivityForm extends Component{
   handleSubmit(event){
     event.preventDefault();
     const activityId = this.props.activityId;
-
-    // check if location is valid and then submit with lat and lng
-    const GOOGLE_PLACE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/js?query=" +
-      this.state.location + "&key=" + API_KEY;
       
-    fetch(GOOGLE_PLACE_URL, {
-      method: "GET"
-    }).then(res => res.json())
-    .then(json => {
-      if(json.status === "OK"){
-        // grabs location from first result
-        const lat = json.results[0].geometry.location.lat
-        const lng = json.results[0].geometry.location.lng
-        console.log(lat, lng);
-
-        //post new or patch selected activity
-        if(this.props.activityId === 0){
-          // post new
-          this.postActivity();
-        } else {
-          // patch it
-          this.patchActivity(activityId);      
-        }
+    if(this.state.lat !== null && this.state.lng !== null){
+      //post new or patch selected activity
+      if(this.props.activityId === 0){
+        // post new
+        this.postActivity();
       } else {
-        // show the user some warning that google didn't find location
+        // patch it
+        this.patchActivity(activityId);      
       }
-    }).catch(err => console.log(err))
+    } else {
+      // show the user some warning that google didn't find location
+    }
   }
 
   handleLocationChange(location){
@@ -192,12 +180,15 @@ class ActivityForm extends Component{
   handleLocationSelect(location){
     geocodeByAddress(location)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log("Success: ", latLng)) //really save in state
+      .then(latLng => {
+        console.log(`Successfully found ${location} at ${latLng.lat + latLng.lng}`)
+        this.setState({
+          location: location,
+          lat: latLng.lat,
+          lng: latLng.lng
+        });
+      })
       .catch(error => console.log("Error: ", error))
-    
-    this.setState({
-      location: location
-    });
   }
 
   // ------ END FORM HANLDERS ------
