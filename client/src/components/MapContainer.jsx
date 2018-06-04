@@ -91,6 +91,7 @@ export class MapContainer extends Component {
           ref="mapper"
           google={this.props.google} 
           style={MAP_STYLE}
+          containerStyle={{position: 'relative'}}
           initialCenter={{lat: 0, lng: 0}}
           bounds={bounds}
           onClick={this.onMapClick}
