@@ -131,16 +131,6 @@ class ActivityForm extends Component{
   }
 
   // ------ END FETCHING ------
-  
-  // ----- GOOGLE API -----
-  // 1. when a user submits an activity, check to see if the location is real,
-  //     if it is, submit with lat lng coordinates and name
-  //     if not then display a red x next to the input?
-  // check format for patching and posting methods
-  // 2. when an activity is selected put the location name into field
-  //     
-
-  // ----- END GOOGLE -----
 
   // ------ FORM HANDLERS ------
 
