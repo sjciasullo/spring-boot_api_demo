@@ -12,7 +12,10 @@
     - Solution: have to use Google Map's Places library, not api for web
         - use autocomplete package, rather than custom checking
 5. map wrapper is not sizing which blocks form
+    - found containerStyles within the google-maps-react module
     - Solution: https://github.com/fullstackreact/google-maps-react/issues/26
         - found a containerStyle prop for map to set display to relative
 6. Google Maps API is trying to double download in map component and for autocomplete component
     - Solution: try wrapping form in HoC from map package
+    - Solution: try deleting references to the Places library from maps component within package module
+    - unsolved but copying edited version of google-maps-react package
