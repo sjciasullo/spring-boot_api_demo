@@ -70,7 +70,7 @@ export class MapContainer extends Component {
       return (
         <Marker 
           key={activity.id} 
-          name={`${activity.name}\n${activity.location}\n${activity.minutes} minutes\n ${activity.month}
+          name={`${activity.activityName}\n${activity.location}\n${activity.totalMinutes} minutes\n ${activity.month}
           `} 
           position={{lat: activity.latitude, lng: activity.longitude}} 
           onClick={this.onMarkerClick}
