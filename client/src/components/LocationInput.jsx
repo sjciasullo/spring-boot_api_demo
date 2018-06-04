@@ -9,6 +9,8 @@ class LocationInput extends Component {
     this.state = {
       address: "",
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // trying solution to load script tag https://stackoverflow.com/questions/49375867/how-do-you-reference-a-process-env-variable-in-html-script-src-react
