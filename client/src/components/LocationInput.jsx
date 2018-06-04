@@ -70,7 +70,9 @@ class LocationInput extends Component {
                 const style = suggestion.active
                   ? { backgroundColor: "#ccc", cursor: "pointer" }
                   : { backgroundColor: "#fff", cursor: "pointer" };
-                style.border = "solid 1px #ccc"
+                style.border = "solid 1px #ccc";
+                style.width = "300px";
+                // style.position = "block";
                 return (
                   <div {...getSuggestionItemProps(suggestion, { className, style })}>
                     <span>{suggestion.description}</span>
