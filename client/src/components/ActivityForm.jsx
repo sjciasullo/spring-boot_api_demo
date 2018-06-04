@@ -21,6 +21,7 @@ class ActivityForm extends Component{
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deleteActivity = this.deleteActivity.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
   }
 
   // ------ LIFE CYCLE ------
@@ -127,12 +128,18 @@ class ActivityForm extends Component{
   // ----- END GOOGLE -----
 
   // ------ FORM HANDLERS ------
+  handleLocationChange(location){
+    this.setState({
+      location: location
+    });
+  }
+
   handleInputChange(event){
     const name = event.target.name
     const value = event.target.value
     this.setState({
       [name]:value,
-    })
+    });
   }
 
   // need to send put request with userId as well 
@@ -182,12 +189,9 @@ class ActivityForm extends Component{
               />
               <br />
 
-              {/* This will be location input tag 
-              <input name="location" onChange={this.handleInputChange} type="text" 
-                placeholder="Location" value={this.state.location}
-              />
-              */}
-              <LocationInput />
+              <LocationInput 
+                location={this.state.location}
+                handleChange={this.handleLocationChange}/>
               <br />
 
               {/* only show date input for a new activity */}

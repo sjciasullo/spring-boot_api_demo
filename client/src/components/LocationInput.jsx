@@ -9,27 +9,19 @@ class LocationInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: "",
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  // trying solution to load script tag https://stackoverflow.com/questions/49375867/how-do-you-reference-a-process-env-variable-in-html-script-src-react
+  // trying solution to load script tag using env variable
+  //https://stackoverflow.com/questions/49375867/how-do-you-reference-a-process-env-variable-in-html-script-src-react
   componentWillMount(){
     const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
     const script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=initGoogle`;
     script.async = true;
     document.head.append(script);
-  }
-
-  handleChange(address){
-    // needs to be bound?
-    this.setState({
-      address: address
-    })
   }
 
   handleSelect(address){
@@ -50,8 +42,8 @@ class LocationInput extends Component {
   render() {
     return (
       <PlacesAutocomplete
-        value={this.state.address} // this will come from props
-        onChange={this.handleChange} // these might be func
+        value={this.props.location} // this will come from props
+        onChange={this.props.handleChange} // these might be func
         onSelect={this.handleSelect}
         googleCallbackName="initGoogle"
       >
