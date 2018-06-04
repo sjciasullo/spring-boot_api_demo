@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/ActivityForm.css';
 
+const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+
 class ActivityForm extends Component{
   constructor(props){
     // props will need to have userId and activity id
@@ -113,7 +115,7 @@ class ActivityForm extends Component{
   // ------ END FETCHING ------
   
   // ----- GOOGLE API -----
-  // 1. when a user submits a song, check to see if the location is real,
+  // 1. when a user submits an activity, check to see if the location is real,
   //     if it is, submit with lat lng coordinates and name
   //     if not then display a red x next to the input?
   // check format for patching and posting methods
@@ -137,14 +139,31 @@ class ActivityForm extends Component{
     const activityId = this.props.activityId;
 
     // check if location is valid and then submit with lat and lng
+    const GOOGLE_PLACE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" +
+      this.state.location + "&key=" + API_KEY;
+      
+    fetch(GOOGLE_PLACE_URL, {
+      method: "GET"
+    }).then(res => res.json())
+    .then(json => {
+      if(json.status === "OK"){
+        // grabs location from first result
+        const lat = json.results[0].geometry.location.lat
+        const lng = json.results[0].geometry.location.lng
+        console.log(lat, lng);
 
-    if(this.props.activityId === 0){
-      // post new
-      this.postActivity();
-    } else {
-      // patch it
-      this.patchActivity(activityId);      
-    }
+        //post new or patch selected activity
+        if(this.props.activityId === 0){
+          // post new
+          this.postActivity();
+        } else {
+          // patch it
+          this.patchActivity(activityId);      
+        }
+      } else {
+        // show the user some warning that google didn't find location
+      }
+    }).catch(err => console.log(err))
   }
   // ------ END FORM HANLDERS ------
 
