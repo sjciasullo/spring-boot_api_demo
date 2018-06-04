@@ -46,10 +46,10 @@
         callback: 'CALLBACK_NAME',
         // removed libraries: libraries.join(',')
         client: client,
-        v: googleVersion,
-        channel: channel,
-        language: language,
-        region: region
+        // v: googleVersion,
+        // channel: channel,
+        //language: language,
+        // region: region
       };
 
       var paramStr = Object.keys(params).filter(function (k) {
