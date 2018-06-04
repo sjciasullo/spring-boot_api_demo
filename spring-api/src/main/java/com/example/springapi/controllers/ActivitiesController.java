@@ -43,6 +43,9 @@ public class ActivitiesController {
         activityFromDb.setTotalMinutes(activityRequest.getTotalMinutes());
         activityFromDb.setActivityName(activityRequest.getActivityName());
         activityFromDb.setNotes(activityRequest.getNotes());
+        activityFromDb.setLocation(activityRequest.getLocation());
+        activityFromDb.setLatitude(activityRequest.getLatitude());
+        activityFromDb.setLongitude(activityRequest.getLongitude());
         return activityRepository.save(activityFromDb);
     }
 }

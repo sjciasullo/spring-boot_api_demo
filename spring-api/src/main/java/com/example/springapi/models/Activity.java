@@ -26,4 +26,13 @@ public class Activity {
 
     @Column(name = "NOTES")
     private String notes;
+
+    @Column(name = "LOCATION")
+    private String location;
+
+    @Column(name = "LATITUDE")
+    private Double latitude;
+
+    @Column(name = "LONGITUDE")
+    private Double longitude;
 }
