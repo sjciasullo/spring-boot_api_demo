@@ -73,13 +73,16 @@ export class MapContainer extends Component {
     let bounds = new this.props.google.maps.LatLngBounds();
 
     // map through points to create markers while extending the bounds on map for each
-    const markerComponents = POINTS.map((point, index) =>{
-      bounds.extend(point);
+    const markerComponents = this.props.activities.map((activity) =>{
+      bounds.extend({lat: activity.latitude, lng: activity.longitude});
+      console.log(`Activity ${activity}`)
+      console.log(`lat: ${activity.latitude} | lng: ${activity.longitude}`)
       return (
         <Marker 
-          key={index} 
-          name={"point" + index} 
-          position={point} 
+          key={activity.id} 
+          name={`${activity.name}\n${activity.location}\n${activity.minutes} minutes\n ${activity.month}
+          `} 
+          position={{lat: activity.latitude, lng: activity.longitude}} 
           onClick={this.onMarkerClick}
         />
       )
