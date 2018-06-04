@@ -62,6 +62,8 @@ class ActivityForm extends Component{
   // ------ END LIFE CYCLE ------
 
   // ------ FETCHING ------
+  // TODO: ADD LOCATION, LAT, AND LNG TO THESE REQUESTS
+
   getActivity(id){
     // if activity is 0 then we are trying to create a new activity
     if(id !== 0){
@@ -146,7 +148,8 @@ class ActivityForm extends Component{
   handleSubmit(event){
     event.preventDefault();
     const activityId = this.props.activityId;
-      
+    
+    // TODO might just put defaults in the submits, rather than protect here
     if(this.state.lat !== null && this.state.lng !== null){
       //post new or patch selected activity
       if(this.props.activityId === 0){
