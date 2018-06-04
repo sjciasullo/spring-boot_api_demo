@@ -4,14 +4,6 @@ import '../styles/MapContainer.css';
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
-// dummy data
-const POINTS = [
-  {lat: 25.774, lng: -80.190},
-  {lat: 18.466, lng: -66.118},
-  {lat: 32.321, lng: -64.757},
-  {lat: 25.774, lng: -80.190}
-]
-
 // using method from https://www.npmjs.com/package/google-maps-react
 // markerClick methods as described in package spec 
 
