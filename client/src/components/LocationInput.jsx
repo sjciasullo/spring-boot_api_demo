@@ -11,6 +11,7 @@ class LocationInput extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   // trying solution to load script tag https://stackoverflow.com/questions/49375867/how-do-you-reference-a-process-env-variable-in-html-script-src-react
@@ -30,6 +31,11 @@ class LocationInput extends Component {
   }
 
   handleSelect(address){
+    //set address to selected
+    this.setState({
+      address: address
+    })
+
     // uses google api to get the location's info
     geocodeByAddress(address)
       // this will really set the latlng in parent in step 2
