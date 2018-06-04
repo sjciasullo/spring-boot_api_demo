@@ -183,8 +183,6 @@ class ActivityForm extends Component{
     geocodeByAddress(location)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
-        console.log(`Successfully found ${location} at ${latLng.lat} + ${latLng.lng}`)
-        console.log(latLng);
         this.setState({
           location: location,
           lat: latLng.lat,
