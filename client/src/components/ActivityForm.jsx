@@ -25,6 +25,17 @@ class ActivityForm extends Component{
   }
 
   // ------ LIFE CYCLE ------
+  // trying solution to load script tag using env variable
+  //https://stackoverflow.com/questions/49375867/how-do-you-reference-a-process-env-variable-in-html-script-src-react
+  componentWillMount(){
+    // loads the places library from google for location input
+    const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=initGoogle`;
+    script.async = true;
+    document.head.append(script);
+  }
+
   componentDidMount(){
     this.getActivity(this.props.activityId);
   }
