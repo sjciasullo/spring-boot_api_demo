@@ -139,7 +139,7 @@ class ActivityForm extends Component{
     const activityId = this.props.activityId;
 
     // check if location is valid and then submit with lat and lng
-    const GOOGLE_PLACE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" +
+    const GOOGLE_PLACE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/js?query=" +
       this.state.location + "&key=" + API_KEY;
       
     fetch(GOOGLE_PLACE_URL, {
