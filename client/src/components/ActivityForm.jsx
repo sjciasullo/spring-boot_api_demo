@@ -75,6 +75,9 @@ class ActivityForm extends Component{
           activityName: json.activityName,
           totalMinutes: json.totalMinutes, // we may need to be careful of types here
           notes: json.notes,
+          location: json.location,
+          lat: json.latitude,
+          lng: json.longitude,
           apiLoaded: true
         })
       }).catch(err => console.log(err))
@@ -95,7 +98,10 @@ class ActivityForm extends Component{
       body: JSON.stringify({
         activityName: this.state.activityName,
         totalMinutes: this.state.totalMinutes,
-        notes: this.state.notes
+        notes: this.state.notes,
+        location: this.state.location,
+        latitude: this.state.lat,
+        longitude: this.state.lng,
       })
     }).then(res => res.json())
     .then(json => {
@@ -115,7 +121,10 @@ class ActivityForm extends Component{
         userId: this.props.userId,
         month: this.state.month || "month",
         totalMinutes: this.state.totalMinutes || 0,
-        notes: this.state.notes
+        notes: this.state.notes,
+        location: this.state.location || "stay classy, it's planet earth",
+        latitude: this.state.lat || 0,
+        longitude: this.state.lng || 0
       })
     }).then(res => res.json())
     .then(json => {
@@ -174,7 +183,8 @@ class ActivityForm extends Component{
     geocodeByAddress(location)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
-        console.log(`Successfully found ${location} at ${latLng.lat + latLng.lng}`)
+        console.log(`Successfully found ${location} at ${latLng.lat} + ${latLng.lng}`)
+        console.log(latLng);
         this.setState({
           location: location,
           lat: latLng.lat,
