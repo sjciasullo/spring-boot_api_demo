@@ -110,8 +110,18 @@ class ActivityForm extends Component{
     }).catch(err => console.log(err))
   }
 
-  // ------ FETCHING ------
+  // ------ END FETCHING ------
   
+  // ----- GOOGLE API -----
+  // 1. when a user submits a song, check to see if the location is real,
+  //     if it is, submit with lat lng coordinates and name
+  //     if not then display a red x next to the input?
+  // check format for patching and posting methods
+  // 2. when an activity is selected put the location name into field
+  //     
+
+  // ----- END GOOGLE -----
+
   // ------ FORM HANDLERS ------
   handleInputChange(event){
     const name = event.target.name
@@ -123,8 +133,11 @@ class ActivityForm extends Component{
 
   // need to send put request with userId as well 
   handleSubmit(event){
-    const activityId = this.props.activityId;
     event.preventDefault();
+    const activityId = this.props.activityId;
+
+    // check if location is valid and then submit with lat and lng
+
     if(this.props.activityId === 0){
       // post new
       this.postActivity();
