@@ -77,21 +77,13 @@ export class MapContainer extends Component {
         />
       )
     })
-
-    // styles for map
-    const MAP_STYLE = {
-      width: '730px',
-      height: '400px',
-      marginLeft: '30px'
-    }
     
     return(
       <div className="map-container">
         <Map 
           ref="mapper"
-          google={this.props.google} 
-          style={MAP_STYLE}
-          containerStyle={{position: 'relative'}}
+          google={this.props.google}
+          containerStyle={{position: 'relative', marginLeft: '30px'}}
           initialCenter={{lat: 0, lng: 0}}
           bounds={bounds}
           onClick={this.onMapClick}
