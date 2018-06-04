@@ -4,8 +4,6 @@ import '../styles/ActivityForm.css';
 import LocationInput from './LocationInput';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
-const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-
 class ActivityForm extends Component{
   constructor(props){
     // props will need to have userId and activity id
