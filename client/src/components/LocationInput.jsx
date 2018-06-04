@@ -23,9 +23,9 @@ class LocationInput extends Component {
     geocodeByAddress(address)
       // this will really set the latlng in parent in step 2
       // will we need to pass the whole handle select down from activity form ?
-      .then(results = getLatLng(results[0]))
+      .then(results => getLatLng(results[0]))
       .then(latLng => console.log("Success: ", latLng)) 
-      .catch(error => console.log("Error: ", err))
+      .catch(error => console.log("Error: ", error))
   }
 
   render() {

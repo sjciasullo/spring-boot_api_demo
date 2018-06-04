@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/ActivityForm.css';
 
+import LocationInput from './LocationInput';
+
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 class ActivityForm extends Component{
@@ -180,9 +182,12 @@ class ActivityForm extends Component{
               />
               <br />
 
+              {/* This will be location input tag 
               <input name="location" onChange={this.handleInputChange} type="text" 
                 placeholder="Location" value={this.state.location}
               />
+              */}
+              <LocationInput />
               <br />
 
               {/* only show date input for a new activity */}
