@@ -1,5 +1,7 @@
 import React from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
+import { ScriptCache } from 'react-google-maps/lib/async/ScriptCache';
+
 // uses example from package https://github.com/kenny-hibino/react-places-autocomplete
 
 import '../styles/LocationInput.css';
@@ -43,4 +45,4 @@ function LocationInput(props){
   );
 }
 
-export default LocationInput;
+export default ScriptCache(LocationInput);
