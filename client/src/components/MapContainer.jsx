@@ -67,8 +67,6 @@ export class MapContainer extends Component {
     // map through points to create markers while extending the bounds on map for each
     const markerComponents = this.props.activities.map((activity) =>{
       bounds.extend({lat: activity.latitude, lng: activity.longitude});
-      console.log(`Activity ${activity}`)
-      console.log(`lat: ${activity.latitude} | lng: ${activity.longitude}`)
       return (
         <Marker 
           key={activity.id} 
