@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/ActivityForm.css';
 
 import LocationInput from './LocationInput';
+import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
@@ -22,6 +23,7 @@ class ActivityForm extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deleteActivity = this.deleteActivity.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleLocationSelect = this.handleLocationSelect.bind(this);
   }
 
   // ------ LIFE CYCLE ------
@@ -139,11 +141,6 @@ class ActivityForm extends Component{
   // ----- END GOOGLE -----
 
   // ------ FORM HANDLERS ------
-  handleLocationChange(location){
-    this.setState({
-      location: location
-    });
-  }
 
   handleInputChange(event){
     const name = event.target.name
@@ -185,6 +182,24 @@ class ActivityForm extends Component{
       }
     }).catch(err => console.log(err))
   }
+
+  handleLocationChange(location){
+    this.setState({
+      location: location
+    });
+  }
+
+  handleLocationSelect(location){
+    geocodeByAddress(location)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => console.log("Success: ", latLng)) //really save in state
+      .catch(error => console.log("Error: ", error))
+    
+    this.setState({
+      location: location
+    });
+  }
+
   // ------ END FORM HANLDERS ------
 
   render(){
@@ -202,7 +217,9 @@ class ActivityForm extends Component{
 
               <LocationInput 
                 location={this.state.location}
-                handleChange={this.handleLocationChange}/>
+                handleChange={this.handleLocationChange}
+                handleSelect={this.handleLocationSelect}
+              />
               <br />
 
               {/* only show date input for a new activity */}

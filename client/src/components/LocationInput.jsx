@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import PlacesAutocomplete from 'react-places-autocomplete';
 // uses example from package https://www.npmjs.com/package/react-places-autocomplete
 
 import '../styles/LocationInput.css';
@@ -10,21 +10,6 @@ class LocationInput extends Component {
     super(props);
     this.state = {
     };
-
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  handleSelect(location){
-    //set location to selected
-    this.props.handleChange(location);
-
-    // uses google api to get the location's info
-    geocodeByAddress(location)
-      // this will really set the latlng in parent in step 2
-      // will we need to pass the whole handle select down from activity form ?
-      .then(results => getLatLng(results[0]))
-      .then(latLng => console.log("Success: ", latLng)) 
-      .catch(error => console.log("Error: ", error))
   }
 
   render() {
@@ -32,10 +17,10 @@ class LocationInput extends Component {
       <PlacesAutocomplete
         value={this.props.location} // this will come from props
         onChange={this.props.handleChange} // these might be func
-        onSelect={this.handleSelect}
+        onSelect={this.props.handleSelect}
         googleCallbackName="initGoogle"
       >
-        {/* handle input and autocomplete container */}
+        {/* handle input and autocomplete components */}
         {({ getInputProps, suggestions, getSuggestionItemProps }) => (
           <div>
             <input
