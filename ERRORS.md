@@ -11,4 +11,6 @@
 4. CORS error trying to fetch locations from google's api
     - Solution: have to use Google Map's Places library, not api for web
         - use autocomplete package, rather than custom checking
-
+5. map wrapper is not sizing which blocks form
+    - Solution: https://github.com/fullstackreact/google-maps-react/issues/26
+        - found a containerStyle prop for map to set display to relative
