@@ -22,7 +22,9 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
 
 ## Running Instructions
 1. Turn on Docker application
-2. Navigate to project repository in Command Line Interface
+2. (clone to local repo) Navigate to project repository in Command Line Interface
+2. NPM install if just cloned
+2. Copy "google-maps-react" into node-modules for edited version
 3. Execute 'docker-compose up' from spring api directory
 4. Execute 'npm start' from client
 5. Switch users with select option to view different data subsets
