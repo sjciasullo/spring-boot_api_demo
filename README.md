@@ -59,8 +59,8 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
         4. ~~add form input for location~~
         5. ~~touch google api to autofill location~~
         6. ~~stub a location field or latitude, longitude in sending post/put~~
-    2. Update activities model to account for lat and long
-    3. hook together sending post/put to lat and long
+    2. ~~Update activities model to account for lat and long~~
+    3. ~~hook together sending post/put to lat and long~~
 2. Re-organize model structure
     1. using category table rather than "name" of activity
         - does this keep track of user_id and use a hook to update sum of minutes?
