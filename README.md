@@ -51,7 +51,7 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
     - change table name to reflect an activity log tracker allowing for a person to log their minutes for any type of activity
 
 ## To-do features
-1. Google Map API feature
+1. ~~Google Map API feature~~
     1. ~~Create client visual for map~~
         1. ~~stub map component~~
         2. ~~create visual wrapper component to tab between graph and map~~
@@ -61,6 +61,7 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
         6. ~~stub a location field or latitude, longitude in sending post/put~~
     2. ~~Update activities model to account for lat and long~~
     3. ~~hook together sending post/put to lat and long~~
+    4. TODO: Fix bug loading google maps api twice
 2. Re-organize model structure
     1. using category table rather than "name" of activity
         - does this keep track of user_id and use a hook to update sum of minutes?
