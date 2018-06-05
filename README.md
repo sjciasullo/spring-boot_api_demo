@@ -18,7 +18,7 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
 
 
 ## Technologies
-- Spring Boot, Docker, React, Recharts
+- Spring Boot, Docker, React, Recharts, Google Maps and Places API
 
 ## Running Instructions
 1. Turn on Docker application
