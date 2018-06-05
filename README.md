@@ -6,7 +6,9 @@ You will design, develop, and architect a full-stack app with Spring Boot and Sp
 
 ## Client Proposal
 - Problem statement from the client
+    - Client wants a tool to log activities while tracking statistics and locations of these activities
 - What business problem are you trying to solve with technology?
+    - Simple data visualization with interface to create, edit and destroy data
 - Technical requirements of solving the business problem
     - construct database structure to represent data client wants to save
     - construct API out of database with endpoints to allow for client interaction
